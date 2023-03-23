@@ -208,7 +208,7 @@ org.apache.commons:commons-lang3: Apache License 2.0
 org.projectlombok:lombok: MIT License
 commons-codec:commons-codec: Apache License 2.0
 com.squareup.okhttp:okhttp: Apache License 2.0
-com.squareup.okhttp:logging-interceptor:
+com.squareup.okhttp:logging-interceptor:Apache License 2.0
 com.google.code.gson:gson: Apache License 2.0
 io.gsonfire:gson-fire: Apache License 2.0
 org.threeten:threetenbp: BSD 3-Clause "New" or "Revised" License
