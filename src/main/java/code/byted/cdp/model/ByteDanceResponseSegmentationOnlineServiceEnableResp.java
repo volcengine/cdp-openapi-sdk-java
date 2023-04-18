@@ -28,7 +28,6 @@ package code.byted.cdp.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import code.byted.cdp.model.ParamFilter;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -36,62 +35,73 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 /**
- * ParamCondition
+ * ByteDanceResponseSegmentationOnlineServiceEnableResp
  */
 
 @javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-04-18T11:26:59.028+08:00[Asia/Shanghai]")
-public class ParamCondition {
-  @SerializedName("logic")
-  private String logic = null;
+public class ByteDanceResponseSegmentationOnlineServiceEnableResp {
+  @SerializedName("code")
+  private Integer code = null;
 
-  @SerializedName("paramFilters")
-  private List<ParamFilter> paramFilters = null;
+  @SerializedName("msg")
+  private String msg = null;
 
-  public ParamCondition logic(String logic) {
-    this.logic = logic;
+  @SerializedName("data")
+  private String data = null;
+
+  public ByteDanceResponseSegmentationOnlineServiceEnableResp code(Integer code) {
+    this.code = code;
     return this;
   }
 
    /**
-   * Get logic
-   * @return logic
+   * Get code
+   * @return code
   **/
   @Schema(required = true, description = "")
-  public String getLogic() {
-    return logic;
+  public Integer getCode() {
+    return code;
   }
 
-  public void setLogic(String logic) {
-    this.logic = logic;
+  public void setCode(Integer code) {
+    this.code = code;
   }
 
-  public ParamCondition paramFilters(List<ParamFilter> paramFilters) {
-    this.paramFilters = paramFilters;
-    return this;
-  }
-
-  public ParamCondition addParamFiltersItem(ParamFilter paramFiltersItem) {
-    if (this.paramFilters == null) {
-      this.paramFilters = new ArrayList<ParamFilter>();
-    }
-    this.paramFilters.add(paramFiltersItem);
+  public ByteDanceResponseSegmentationOnlineServiceEnableResp msg(String msg) {
+    this.msg = msg;
     return this;
   }
 
    /**
-   * Get paramFilters
-   * @return paramFilters
+   * Get msg
+   * @return msg
   **/
   @Schema(description = "")
-  public List<ParamFilter> getParamFilters() {
-    return paramFilters;
+  public String getMsg() {
+    return msg;
   }
 
-  public void setParamFilters(List<ParamFilter> paramFilters) {
-    this.paramFilters = paramFilters;
+  public void setMsg(String msg) {
+    this.msg = msg;
+  }
+
+  public ByteDanceResponseSegmentationOnlineServiceEnableResp data(String data) {
+    this.data = data;
+    return this;
+  }
+
+   /**
+   * Get data
+   * @return data
+  **/
+  @Schema(description = "")
+  public String getData() {
+    return data;
+  }
+
+  public void setData(String data) {
+    this.data = data;
   }
 
 
@@ -103,24 +113,26 @@ public class ParamCondition {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ParamCondition paramCondition = (ParamCondition) o;
-    return Objects.equals(this.logic, paramCondition.logic) &&
-        Objects.equals(this.paramFilters, paramCondition.paramFilters);
+    ByteDanceResponseSegmentationOnlineServiceEnableResp byteDanceResponseSegmentationOnlineServiceEnableResp = (ByteDanceResponseSegmentationOnlineServiceEnableResp) o;
+    return Objects.equals(this.code, byteDanceResponseSegmentationOnlineServiceEnableResp.code) &&
+        Objects.equals(this.msg, byteDanceResponseSegmentationOnlineServiceEnableResp.msg) &&
+        Objects.equals(this.data, byteDanceResponseSegmentationOnlineServiceEnableResp.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(logic, paramFilters);
+    return Objects.hash(code, msg, data);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ParamCondition {\n");
+    sb.append("class ByteDanceResponseSegmentationOnlineServiceEnableResp {\n");
     
-    sb.append("    logic: ").append(toIndentedString(logic)).append("\n");
-    sb.append("    paramFilters: ").append(toIndentedString(paramFilters)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    msg: ").append(toIndentedString(msg)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -28,6 +28,8 @@ package code.byted.cdp.openapi;
 
 import code.byted.cdp.model.ByteDanceResponseRecordSegShardInfoResp;
 import code.byted.cdp.model.ByteDanceResponseSegmentationListResp;
+import code.byted.cdp.model.ByteDanceResponseSegmentationOnlineServiceEnableReq;
+import code.byted.cdp.model.ByteDanceResponseSegmentationOnlineServiceEnableResp;
 import code.byted.cdp.model.ByteDanceResponseSegmentationResp;
 import code.byted.cdp.model.ByteDanceResponseSegmentationUploadResp;
 import java.io.File;
@@ -122,6 +124,23 @@ public class SegmentationApiTest {
         Boolean isAbaseAvailable = null;
         Boolean isAbaseEnabled = null;
         ByteDanceResponseSegmentationListResp response = api.legacyGetSegmentList(tenantId, current, pageSize, keyword, isSelfSee, isOnlySourceReady, idType, segTypes, sourcePlatform, isAbaseAvailable, isAbaseEnabled);
+
+        // TODO: test validations
+    }
+    /**
+     * 分群在线服务开启/关闭
+     *
+     * 开启/关闭单个分群的在线服务
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void segmentOnlineServiceEnableTest() throws Exception {
+        ByteDanceResponseSegmentationOnlineServiceEnableReq body = null;
+        Integer tenantId = null;
+        Integer segId = null;
+        ByteDanceResponseSegmentationOnlineServiceEnableResp response = api.segmentOnlineServiceEnable(body, tenantId, segId);
 
         // TODO: test validations
     }

@@ -42,6 +42,8 @@ import java.io.IOException;
 
 import code.byted.cdp.model.ByteDanceResponseRecordSegShardInfoResp;
 import code.byted.cdp.model.ByteDanceResponseSegmentationListResp;
+import code.byted.cdp.model.ByteDanceResponseSegmentationOnlineServiceEnableReq;
+import code.byted.cdp.model.ByteDanceResponseSegmentationOnlineServiceEnableResp;
 import code.byted.cdp.model.ByteDanceResponseSegmentationResp;
 import code.byted.cdp.model.ByteDanceResponseSegmentationUploadResp;
 import java.io.File;
@@ -731,6 +733,163 @@ public class SegmentationApi {
 
         com.squareup.okhttp.Call call = legacyGetSegmentListValidateBeforeCall(tenantId, current, pageSize, keyword, isSelfSee, isOnlySourceReady, idType, segTypes, sourcePlatform, isAbaseAvailable, isAbaseEnabled, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ByteDanceResponseSegmentationListResp>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, localVarAccepts, callback);
+        return call;
+    }
+    /**
+     * Build call for segmentOnlineServiceEnable
+     * @param body  (required)
+     * @param tenantId  (required)
+     * @param segId  (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call segmentOnlineServiceEnableCall(ByteDanceResponseSegmentationOnlineServiceEnableReq body, Integer tenantId, Integer segId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        localVarQueryParams.add(new Pair("tenantId", tenantId.toString()));
+        localVarQueryParams.add(new Pair("segId", segId.toString()));
+
+        localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
+        localVarQueryParams.add(new Pair("Version","2021-12-16"));
+        localVarQueryParams.add(new Pair("ApiAction","segmentOnlineServiceEnable"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-02-10"));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call segmentOnlineServiceEnableValidateBeforeCall(ByteDanceResponseSegmentationOnlineServiceEnableReq body, Integer tenantId, Integer segId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling segmentOnlineServiceEnable(Async)");
+        }
+        // verify the required parameter 'tenantId' is set
+        if (tenantId == null) {
+            throw new ApiException("Missing the required parameter 'tenantId' when calling segmentOnlineServiceEnable(Async)");
+        }
+        // verify the required parameter 'segId' is set
+        if (segId == null) {
+            throw new ApiException("Missing the required parameter 'segId' when calling segmentOnlineServiceEnable(Async)");
+        }
+
+        com.squareup.okhttp.Call call = segmentOnlineServiceEnableCall(body, tenantId, segId, progressListener, progressRequestListener);
+        return call;
+
+
+
+
+
+    }
+
+    /**
+     * 分群在线服务开启/关闭
+     * 开启/关闭单个分群的在线服务
+     * @param body  (required)
+     * @param tenantId  (required)
+     * @param segId  (required)
+     * @return ByteDanceResponseSegmentationOnlineServiceEnableResp
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ByteDanceResponseSegmentationOnlineServiceEnableResp segmentOnlineServiceEnable(ByteDanceResponseSegmentationOnlineServiceEnableReq body, Integer tenantId, Integer segId) throws ApiException {
+        ApiResponse<ByteDanceResponseSegmentationOnlineServiceEnableResp> resp = segmentOnlineServiceEnableWithHttpInfo(body, tenantId, segId);
+        return resp.getData();
+    }
+
+    /**
+     * 分群在线服务开启/关闭
+     * 开启/关闭单个分群的在线服务
+     * @param body  (required)
+     * @param tenantId  (required)
+     * @param segId  (required)
+     * @return ApiResponse&lt;ByteDanceResponseSegmentationOnlineServiceEnableResp&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ByteDanceResponseSegmentationOnlineServiceEnableResp> segmentOnlineServiceEnableWithHttpInfo(ByteDanceResponseSegmentationOnlineServiceEnableReq body, Integer tenantId, Integer segId) throws ApiException {
+        com.squareup.okhttp.Call call = segmentOnlineServiceEnableValidateBeforeCall(body, tenantId, segId, null, null);
+        Type localVarReturnType = new TypeToken<ByteDanceResponseSegmentationOnlineServiceEnableResp>(){}.getType();
+
+        String[] localVarAccepts = {
+            "application/json"
+        };
+
+        return apiClient.execute(call, localVarReturnType, localVarAccepts);
+    }
+
+    /**
+     * 分群在线服务开启/关闭 (asynchronously)
+     * 开启/关闭单个分群的在线服务
+     * @param body  (required)
+     * @param tenantId  (required)
+     * @param segId  (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call segmentOnlineServiceEnableAsync(ByteDanceResponseSegmentationOnlineServiceEnableReq body, Integer tenantId, Integer segId, final ApiCallback<ByteDanceResponseSegmentationOnlineServiceEnableResp> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        String[] localVarAccepts = {
+            "application/json"
+        };
+
+        com.squareup.okhttp.Call call = segmentOnlineServiceEnableValidateBeforeCall(body, tenantId, segId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ByteDanceResponseSegmentationOnlineServiceEnableResp>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, localVarAccepts, callback);
         return call;
     }

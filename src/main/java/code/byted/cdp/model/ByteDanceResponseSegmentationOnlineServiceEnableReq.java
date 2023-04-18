@@ -28,7 +28,6 @@ package code.byted.cdp.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import code.byted.cdp.model.ParamFilter;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -36,62 +35,31 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 /**
- * ParamCondition
+ * ByteDanceResponseSegmentationOnlineServiceEnableReq
  */
 
 @javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-04-18T11:26:59.028+08:00[Asia/Shanghai]")
-public class ParamCondition {
-  @SerializedName("logic")
-  private String logic = null;
+public class ByteDanceResponseSegmentationOnlineServiceEnableReq {
+  @SerializedName("onlineServiceEnabled")
+  private Boolean onlineServiceEnabled = null;
 
-  @SerializedName("paramFilters")
-  private List<ParamFilter> paramFilters = null;
-
-  public ParamCondition logic(String logic) {
-    this.logic = logic;
+  public ByteDanceResponseSegmentationOnlineServiceEnableReq onlineServiceEnabled(Boolean onlineServiceEnabled) {
+    this.onlineServiceEnabled = onlineServiceEnabled;
     return this;
   }
 
    /**
-   * Get logic
-   * @return logic
+   * Get onlineServiceEnabled
+   * @return onlineServiceEnabled
   **/
   @Schema(required = true, description = "")
-  public String getLogic() {
-    return logic;
+  public Boolean isOnlineServiceEnabled() {
+    return onlineServiceEnabled;
   }
 
-  public void setLogic(String logic) {
-    this.logic = logic;
-  }
-
-  public ParamCondition paramFilters(List<ParamFilter> paramFilters) {
-    this.paramFilters = paramFilters;
-    return this;
-  }
-
-  public ParamCondition addParamFiltersItem(ParamFilter paramFiltersItem) {
-    if (this.paramFilters == null) {
-      this.paramFilters = new ArrayList<ParamFilter>();
-    }
-    this.paramFilters.add(paramFiltersItem);
-    return this;
-  }
-
-   /**
-   * Get paramFilters
-   * @return paramFilters
-  **/
-  @Schema(description = "")
-  public List<ParamFilter> getParamFilters() {
-    return paramFilters;
-  }
-
-  public void setParamFilters(List<ParamFilter> paramFilters) {
-    this.paramFilters = paramFilters;
+  public void setOnlineServiceEnabled(Boolean onlineServiceEnabled) {
+    this.onlineServiceEnabled = onlineServiceEnabled;
   }
 
 
@@ -103,24 +71,22 @@ public class ParamCondition {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ParamCondition paramCondition = (ParamCondition) o;
-    return Objects.equals(this.logic, paramCondition.logic) &&
-        Objects.equals(this.paramFilters, paramCondition.paramFilters);
+    ByteDanceResponseSegmentationOnlineServiceEnableReq byteDanceResponseSegmentationOnlineServiceEnableReq = (ByteDanceResponseSegmentationOnlineServiceEnableReq) o;
+    return Objects.equals(this.onlineServiceEnabled, byteDanceResponseSegmentationOnlineServiceEnableReq.onlineServiceEnabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(logic, paramFilters);
+    return Objects.hash(onlineServiceEnabled);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ParamCondition {\n");
+    sb.append("class ByteDanceResponseSegmentationOnlineServiceEnableReq {\n");
     
-    sb.append("    logic: ").append(toIndentedString(logic)).append("\n");
-    sb.append("    paramFilters: ").append(toIndentedString(paramFilters)).append("\n");
+    sb.append("    onlineServiceEnabled: ").append(toIndentedString(onlineServiceEnabled)).append("\n");
     sb.append("}");
     return sb.toString();
   }
