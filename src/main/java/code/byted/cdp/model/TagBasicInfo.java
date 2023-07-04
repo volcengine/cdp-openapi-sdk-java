@@ -39,7 +39,7 @@ import java.io.IOException;
  * TagBasicInfo
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-04-18T11:26:59.028+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-07-04T11:23:30.393+08:00[Asia/Shanghai]")
 public class TagBasicInfo {
   @SerializedName("id")
   private Integer id = null;
@@ -52,6 +52,9 @@ public class TagBasicInfo {
 
   @SerializedName("LatestSuccessDate")
   private String latestSuccessDate = null;
+
+  @SerializedName("dataSourceId")
+  private Integer dataSourceId = null;
 
   public TagBasicInfo id(Integer id) {
     this.id = id;
@@ -125,6 +128,24 @@ public class TagBasicInfo {
     this.latestSuccessDate = latestSuccessDate;
   }
 
+  public TagBasicInfo dataSourceId(Integer dataSourceId) {
+    this.dataSourceId = dataSourceId;
+    return this;
+  }
+
+   /**
+   * Get dataSourceId
+   * @return dataSourceId
+  **/
+  @Schema(description = "")
+  public Integer getDataSourceId() {
+    return dataSourceId;
+  }
+
+  public void setDataSourceId(Integer dataSourceId) {
+    this.dataSourceId = dataSourceId;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -138,12 +159,13 @@ public class TagBasicInfo {
     return Objects.equals(this.id, tagBasicInfo.id) &&
         Objects.equals(this.name, tagBasicInfo.name) &&
         Objects.equals(this.status, tagBasicInfo.status) &&
-        Objects.equals(this.latestSuccessDate, tagBasicInfo.latestSuccessDate);
+        Objects.equals(this.latestSuccessDate, tagBasicInfo.latestSuccessDate) &&
+        Objects.equals(this.dataSourceId, tagBasicInfo.dataSourceId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, status, latestSuccessDate);
+    return Objects.hash(id, name, status, latestSuccessDate, dataSourceId);
   }
 
 
@@ -156,6 +178,7 @@ public class TagBasicInfo {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    latestSuccessDate: ").append(toIndentedString(latestSuccessDate)).append("\n");
+    sb.append("    dataSourceId: ").append(toIndentedString(dataSourceId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

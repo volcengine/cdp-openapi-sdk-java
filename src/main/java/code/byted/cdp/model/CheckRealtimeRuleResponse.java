@@ -41,7 +41,7 @@ import java.util.List;
  * CheckRealtimeRuleResponse
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-04-18T11:26:59.028+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-07-04T11:23:30.393+08:00[Asia/Shanghai]")
 public class CheckRealtimeRuleResponse {
   @SerializedName("code")
   private String code = null;

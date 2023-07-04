@@ -29,6 +29,7 @@ package code.byted.cdp.openapi;
 import code.byted.cdp.model.InlineResponse200;
 import code.byted.cdp.model.InlineResponse2001;
 import code.byted.cdp.model.InlineResponse2002;
+import code.byted.cdp.model.InlineResponse2003;
 import org.threeten.bp.LocalDate;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -97,6 +98,23 @@ public class InsightApiTest {
         Long xTenant = null;
         String xEnv = null;
         InlineResponse2001 response = api.getInsightReportList(xTenant, xEnv);
+
+        // TODO: test validations
+    }
+    /**
+     * 统计洞察报告查看次数
+     *
+     * 
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void getInsightReportUsageTest() throws Exception {
+        Long xTenant = null;
+        String xEnv = null;
+        Boolean openapiOnly = null;
+        InlineResponse2003 response = api.getInsightReportUsage(xTenant, xEnv, openapiOnly);
 
         // TODO: test validations
     }

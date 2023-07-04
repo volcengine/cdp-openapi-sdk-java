@@ -42,7 +42,7 @@ import java.util.List;
  * OnlineTagInfoResp
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-04-18T11:26:59.028+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-07-04T11:23:30.393+08:00[Asia/Shanghai]")
 public class OnlineTagInfoResp {
   @SerializedName("items")
   private List<TagBasicInfo> items = null;
@@ -70,10 +70,10 @@ public class OnlineTagInfoResp {
   }
 
    /**
-   * 返回的标签/属性信息
+   * 返回的标签/属性/行为事件/明细信息
    * @return items
   **/
-  @Schema(description = "返回的标签/属性信息")
+  @Schema(description = "返回的标签/属性/行为事件/明细信息")
   public List<TagBasicInfo> getItems() {
     return items;
   }

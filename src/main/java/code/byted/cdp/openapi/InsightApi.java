@@ -43,6 +43,7 @@ import java.io.IOException;
 import code.byted.cdp.model.InlineResponse200;
 import code.byted.cdp.model.InlineResponse2001;
 import code.byted.cdp.model.InlineResponse2002;
+import code.byted.cdp.model.InlineResponse2003;
 import org.threeten.bp.LocalDate;
 
 import java.lang.reflect.Type;
@@ -533,6 +534,159 @@ public class InsightApi {
 
         com.squareup.okhttp.Call call = getInsightReportListValidateBeforeCall(xTenant, xEnv, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, localVarAccepts, callback);
+        return call;
+    }
+    /**
+     * Build call for getInsightReportUsage
+     * @param xTenant  (required)
+     * @param xEnv  (optional)
+     * @param openapiOnly  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getInsightReportUsageCall(Long xTenant, String xEnv, Boolean openapiOnly, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (openapiOnly != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("openapiOnly", openapiOnly));
+
+
+        localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
+        localVarQueryParams.add(new Pair("Version","2021-12-16"));
+        localVarQueryParams.add(new Pair("ApiAction","getInsightReportUsage"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-02-10"));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        if (xTenant != null)
+        localVarHeaderParams.put("X-Tenant", apiClient.parameterToString(xTenant));
+        if (xEnv != null)
+        localVarHeaderParams.put("X-Env", apiClient.parameterToString(xEnv));
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json", "text/plain"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getInsightReportUsageValidateBeforeCall(Long xTenant, String xEnv, Boolean openapiOnly, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'xTenant' is set
+        if (xTenant == null) {
+            throw new ApiException("Missing the required parameter 'xTenant' when calling getInsightReportUsage(Async)");
+        }
+
+        com.squareup.okhttp.Call call = getInsightReportUsageCall(xTenant, xEnv, openapiOnly, progressListener, progressRequestListener);
+        return call;
+
+
+
+
+
+    }
+
+    /**
+     * 统计洞察报告查看次数
+     * 
+     * @param xTenant  (required)
+     * @param xEnv  (optional)
+     * @param openapiOnly  (optional)
+     * @return InlineResponse2003
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public InlineResponse2003 getInsightReportUsage(Long xTenant, String xEnv, Boolean openapiOnly) throws ApiException {
+        ApiResponse<InlineResponse2003> resp = getInsightReportUsageWithHttpInfo(xTenant, xEnv, openapiOnly);
+        return resp.getData();
+    }
+
+    /**
+     * 统计洞察报告查看次数
+     * 
+     * @param xTenant  (required)
+     * @param xEnv  (optional)
+     * @param openapiOnly  (optional)
+     * @return ApiResponse&lt;InlineResponse2003&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<InlineResponse2003> getInsightReportUsageWithHttpInfo(Long xTenant, String xEnv, Boolean openapiOnly) throws ApiException {
+        com.squareup.okhttp.Call call = getInsightReportUsageValidateBeforeCall(xTenant, xEnv, openapiOnly, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
+
+        String[] localVarAccepts = {
+            "application/json", "text/plain"
+        };
+
+        return apiClient.execute(call, localVarReturnType, localVarAccepts);
+    }
+
+    /**
+     * 统计洞察报告查看次数 (asynchronously)
+     * 
+     * @param xTenant  (required)
+     * @param xEnv  (optional)
+     * @param openapiOnly  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getInsightReportUsageAsync(Long xTenant, String xEnv, Boolean openapiOnly, final ApiCallback<InlineResponse2003> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        String[] localVarAccepts = {
+            "application/json", "text/plain"
+        };
+
+        com.squareup.okhttp.Call call = getInsightReportUsageValidateBeforeCall(xTenant, xEnv, openapiOnly, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, localVarAccepts, callback);
         return call;
     }

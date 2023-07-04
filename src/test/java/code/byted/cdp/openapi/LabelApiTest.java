@@ -26,9 +26,18 @@
 
 package code.byted.cdp.openapi;
 
+import code.byted.cdp.model.CommonBoolean;
+import code.byted.cdp.model.CommonDataModelId;
+import code.byted.cdp.model.CommonLabelId;
+import code.byted.cdp.model.CommonLabelResultData;
+import code.byted.cdp.model.CommonListLabelMetaInfo;
+import code.byted.cdp.model.CommonListLabelResultData;
 import code.byted.cdp.model.CommonOnlineTagInfoResp;
 import code.byted.cdp.model.CommonResponseLabelMetaSimpleInfo;
 import code.byted.cdp.model.CommonResponseListLabelTreeNode;
+import java.io.File;
+import code.byted.cdp.model.ManualLabelCreateReq;
+import code.byted.cdp.model.RerunRequest;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -47,6 +56,41 @@ public class LabelApiTest {
 
     private final LabelApi api = new LabelApi();
 
+    /**
+     * 创建人工标签
+     *
+     * 
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void createManualLabelTest() throws Exception {
+        ManualLabelCreateReq body = null;
+        CommonLabelId response = api.createManualLabel(body);
+
+        // TODO: test validations
+    }
+    /**
+     * 标签运行结果历史数据
+     *
+     * 
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void getHistoryDataTest() throws Exception {
+        Integer id = null;
+        String startDate = null;
+        String endDate = null;
+        Integer showNum = null;
+        Long xTenant = null;
+        String period = null;
+        CommonListLabelResultData response = api.getHistoryData(id, startDate, endDate, showNum, xTenant, period);
+
+        // TODO: test validations
+    }
     /**
      * 获取标签精简信息
      *
@@ -80,7 +124,41 @@ public class LabelApiTest {
         // TODO: test validations
     }
     /**
-     * 获取在线可用标签/属性列表
+     * 获取项目下标签列表
+     *
+     * 
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void getLabelsTest() throws Exception {
+        Long xTenant = null;
+        Integer subjectId = null;
+        String type = null;
+        CommonListLabelMetaInfo response = api.getLabels(xTenant, subjectId, type);
+
+        // TODO: test validations
+    }
+    /**
+     * 标签上一次运行结果数据
+     *
+     * 
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void getLatestHistoryDataTest() throws Exception {
+        Integer id = null;
+        Integer showNum = null;
+        Long xTenant = null;
+        CommonLabelResultData response = api.getLatestHistoryData(id, showNum, xTenant);
+
+        // TODO: test validations
+    }
+    /**
+     * 获取在线可用标签/属性/明细/行为事件列表
      *
      * 
      *
@@ -95,6 +173,38 @@ public class LabelApiTest {
         Integer pageSize = null;
         Integer idType = null;
         CommonOnlineTagInfoResp response = api.getOnlineTagsProp(tenantCode, infoType, current, pageSize, idType);
+
+        // TODO: test validations
+    }
+    /**
+     * 标签重跑
+     *
+     * 
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void rerunLabelTest() throws Exception {
+        RerunRequest body = null;
+        Long xTenant = null;
+        CommonBoolean response = api.rerunLabel(body, xTenant);
+
+        // TODO: test validations
+    }
+    /**
+     * 上传标签文件
+     *
+     * 
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void uploadLabelDataTest() throws Exception {
+        File file = null;
+        Long xTenant = null;
+        CommonDataModelId response = api.uploadLabelData(file, xTenant);
 
         // TODO: test validations
     }

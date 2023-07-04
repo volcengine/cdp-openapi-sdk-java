@@ -72,14 +72,13 @@ public class FileDateAssetApi {
      * Build call for downloadFileDateAsset
      * @param xTenant  (required)
      * @param taskId  (required)
-     * @param segId  (required)
-     * @param file  (required)
+     * @param filePath  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call downloadFileDateAssetCall(String xTenant, Integer taskId, Integer segId, String file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call downloadFileDateAssetCall(String xTenant, Integer taskId, String filePath, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -87,10 +86,8 @@ public class FileDateAssetApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (segId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("segId", segId));
-        if (file != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("file", file));
+        if (filePath != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("filePath", filePath));
 
         localVarQueryParams.add(new Pair("taskId", taskId.toString()));
 
@@ -134,7 +131,7 @@ public class FileDateAssetApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call downloadFileDateAssetValidateBeforeCall(String xTenant, Integer taskId, Integer segId, String file, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call downloadFileDateAssetValidateBeforeCall(String xTenant, Integer taskId, String filePath, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'xTenant' is set
         if (xTenant == null) {
             throw new ApiException("Missing the required parameter 'xTenant' when calling downloadFileDateAsset(Async)");
@@ -143,16 +140,12 @@ public class FileDateAssetApi {
         if (taskId == null) {
             throw new ApiException("Missing the required parameter 'taskId' when calling downloadFileDateAsset(Async)");
         }
-        // verify the required parameter 'segId' is set
-        if (segId == null) {
-            throw new ApiException("Missing the required parameter 'segId' when calling downloadFileDateAsset(Async)");
-        }
-        // verify the required parameter 'file' is set
-        if (file == null) {
-            throw new ApiException("Missing the required parameter 'file' when calling downloadFileDateAsset(Async)");
+        // verify the required parameter 'filePath' is set
+        if (filePath == null) {
+            throw new ApiException("Missing the required parameter 'filePath' when calling downloadFileDateAsset(Async)");
         }
 
-        com.squareup.okhttp.Call call = downloadFileDateAssetCall(xTenant, taskId, segId, file, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = downloadFileDateAssetCall(xTenant, taskId, filePath, progressListener, progressRequestListener);
         return call;
 
 
@@ -166,13 +159,12 @@ public class FileDateAssetApi {
      * 
      * @param xTenant  (required)
      * @param taskId  (required)
-     * @param segId  (required)
-     * @param file  (required)
+     * @param filePath  (required)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public File downloadFileDateAsset(String xTenant, Integer taskId, Integer segId, String file) throws ApiException {
-        ApiResponse<File> resp = downloadFileDateAssetWithHttpInfo(xTenant, taskId, segId, file);
+    public File downloadFileDateAsset(String xTenant, Integer taskId, String filePath) throws ApiException {
+        ApiResponse<File> resp = downloadFileDateAssetWithHttpInfo(xTenant, taskId, filePath);
         return resp.getData();
     }
 
@@ -181,13 +173,12 @@ public class FileDateAssetApi {
      * 
      * @param xTenant  (required)
      * @param taskId  (required)
-     * @param segId  (required)
-     * @param file  (required)
+     * @param filePath  (required)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> downloadFileDateAssetWithHttpInfo(String xTenant, Integer taskId, Integer segId, String file) throws ApiException {
-        com.squareup.okhttp.Call call = downloadFileDateAssetValidateBeforeCall(xTenant, taskId, segId, file, null, null);
+    public ApiResponse<File> downloadFileDateAssetWithHttpInfo(String xTenant, Integer taskId, String filePath) throws ApiException {
+        com.squareup.okhttp.Call call = downloadFileDateAssetValidateBeforeCall(xTenant, taskId, filePath, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
 
         String[] localVarAccepts = {
@@ -202,13 +193,12 @@ public class FileDateAssetApi {
      * 
      * @param xTenant  (required)
      * @param taskId  (required)
-     * @param segId  (required)
-     * @param file  (required)
+     * @param filePath  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call downloadFileDateAssetAsync(String xTenant, Integer taskId, Integer segId, String file, final ApiCallback<File> callback) throws ApiException {
+    public com.squareup.okhttp.Call downloadFileDateAssetAsync(String xTenant, Integer taskId, String filePath, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -233,7 +223,7 @@ public class FileDateAssetApi {
             "application/octet-stream"
         };
 
-        com.squareup.okhttp.Call call = downloadFileDateAssetValidateBeforeCall(xTenant, taskId, segId, file, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = downloadFileDateAssetValidateBeforeCall(xTenant, taskId, filePath, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, localVarAccepts, callback);
         return call;

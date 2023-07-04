@@ -45,7 +45,11 @@ import code.byted.cdp.model.CheckRealtimeRuleRequest;
 import code.byted.cdp.model.CheckRealtimeRuleResponse;
 import code.byted.cdp.model.IDMReq;
 import code.byted.cdp.model.IDMResp;
+import code.byted.cdp.model.OnlineGetUserDetailAndEventRequest;
+import code.byted.cdp.model.OnlineGetUserDetailAndEventResp;
 import code.byted.cdp.model.OnlineGetUserProfileRequest;
+import code.byted.cdp.model.OnlineGetUserSegmentRequest;
+import code.byted.cdp.model.OnlineGetUserSegmentResp;
 import code.byted.cdp.model.OnlineUserProfileRespWithPrivacy;
 
 import java.lang.reflect.Type;
@@ -361,6 +365,145 @@ public class OnlineApi {
         return call;
     }
     /**
+     * Build call for getUserDetailAndEvent
+     * @param body  (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getUserDetailAndEventCall(OnlineGetUserDetailAndEventRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+
+        localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
+        localVarQueryParams.add(new Pair("Version","2021-12-16"));
+        localVarQueryParams.add(new Pair("ApiAction","getUserDetailAndEvent"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-02-10"));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getUserDetailAndEventValidateBeforeCall(OnlineGetUserDetailAndEventRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling getUserDetailAndEvent(Async)");
+        }
+
+        com.squareup.okhttp.Call call = getUserDetailAndEventCall(body, progressListener, progressRequestListener);
+        return call;
+
+
+
+
+
+    }
+
+    /**
+     * 查询用户的行为和明细
+     * 
+     * @param body  (required)
+     * @return OnlineGetUserDetailAndEventResp
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public OnlineGetUserDetailAndEventResp getUserDetailAndEvent(OnlineGetUserDetailAndEventRequest body) throws ApiException {
+        ApiResponse<OnlineGetUserDetailAndEventResp> resp = getUserDetailAndEventWithHttpInfo(body);
+        return resp.getData();
+    }
+
+    /**
+     * 查询用户的行为和明细
+     * 
+     * @param body  (required)
+     * @return ApiResponse&lt;OnlineGetUserDetailAndEventResp&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<OnlineGetUserDetailAndEventResp> getUserDetailAndEventWithHttpInfo(OnlineGetUserDetailAndEventRequest body) throws ApiException {
+        com.squareup.okhttp.Call call = getUserDetailAndEventValidateBeforeCall(body, null, null);
+        Type localVarReturnType = new TypeToken<OnlineGetUserDetailAndEventResp>(){}.getType();
+
+        String[] localVarAccepts = {
+            "application/json"
+        };
+
+        return apiClient.execute(call, localVarReturnType, localVarAccepts);
+    }
+
+    /**
+     * 查询用户的行为和明细 (asynchronously)
+     * 
+     * @param body  (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getUserDetailAndEventAsync(OnlineGetUserDetailAndEventRequest body, final ApiCallback<OnlineGetUserDetailAndEventResp> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        String[] localVarAccepts = {
+            "application/json"
+        };
+
+        com.squareup.okhttp.Call call = getUserDetailAndEventValidateBeforeCall(body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<OnlineGetUserDetailAndEventResp>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, localVarAccepts, callback);
+        return call;
+    }
+    /**
      * Build call for getUserProfileWithPrivacy
      * @param body  (required)
      * @param progressListener Progress listener
@@ -496,6 +639,145 @@ public class OnlineApi {
 
         com.squareup.okhttp.Call call = getUserProfileWithPrivacyValidateBeforeCall(body, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<OnlineUserProfileRespWithPrivacy>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, localVarAccepts, callback);
+        return call;
+    }
+    /**
+     * Build call for getUserSegmentV2
+     * @param body  (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getUserSegmentV2Call(OnlineGetUserSegmentRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+
+        localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
+        localVarQueryParams.add(new Pair("Version","2021-12-16"));
+        localVarQueryParams.add(new Pair("ApiAction","getUserSegmentV2"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-02-10"));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getUserSegmentV2ValidateBeforeCall(OnlineGetUserSegmentRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling getUserSegmentV2(Async)");
+        }
+
+        com.squareup.okhttp.Call call = getUserSegmentV2Call(body, progressListener, progressRequestListener);
+        return call;
+
+
+
+
+
+    }
+
+    /**
+     * 查询用户是否命中分群v2
+     * 
+     * @param body  (required)
+     * @return OnlineGetUserSegmentResp
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public OnlineGetUserSegmentResp getUserSegmentV2(OnlineGetUserSegmentRequest body) throws ApiException {
+        ApiResponse<OnlineGetUserSegmentResp> resp = getUserSegmentV2WithHttpInfo(body);
+        return resp.getData();
+    }
+
+    /**
+     * 查询用户是否命中分群v2
+     * 
+     * @param body  (required)
+     * @return ApiResponse&lt;OnlineGetUserSegmentResp&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<OnlineGetUserSegmentResp> getUserSegmentV2WithHttpInfo(OnlineGetUserSegmentRequest body) throws ApiException {
+        com.squareup.okhttp.Call call = getUserSegmentV2ValidateBeforeCall(body, null, null);
+        Type localVarReturnType = new TypeToken<OnlineGetUserSegmentResp>(){}.getType();
+
+        String[] localVarAccepts = {
+            "application/json"
+        };
+
+        return apiClient.execute(call, localVarReturnType, localVarAccepts);
+    }
+
+    /**
+     * 查询用户是否命中分群v2 (asynchronously)
+     * 
+     * @param body  (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getUserSegmentV2Async(OnlineGetUserSegmentRequest body, final ApiCallback<OnlineGetUserSegmentResp> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        String[] localVarAccepts = {
+            "application/json"
+        };
+
+        com.squareup.okhttp.Call call = getUserSegmentV2ValidateBeforeCall(body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<OnlineGetUserSegmentResp>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, localVarAccepts, callback);
         return call;
     }

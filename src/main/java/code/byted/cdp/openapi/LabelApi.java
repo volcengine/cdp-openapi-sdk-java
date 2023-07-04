@@ -40,9 +40,18 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import code.byted.cdp.model.CommonBoolean;
+import code.byted.cdp.model.CommonDataModelId;
+import code.byted.cdp.model.CommonLabelId;
+import code.byted.cdp.model.CommonLabelResultData;
+import code.byted.cdp.model.CommonListLabelMetaInfo;
+import code.byted.cdp.model.CommonListLabelResultData;
 import code.byted.cdp.model.CommonOnlineTagInfoResp;
 import code.byted.cdp.model.CommonResponseLabelMetaSimpleInfo;
 import code.byted.cdp.model.CommonResponseListLabelTreeNode;
+import java.io.File;
+import code.byted.cdp.model.ManualLabelCreateReq;
+import code.byted.cdp.model.RerunRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -69,6 +78,332 @@ public class LabelApi {
         this.apiClient = apiClient;
     }
 
+    /**
+     * Build call for createManualLabel
+     * @param body  (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createManualLabelCall(ManualLabelCreateReq body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+
+        localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
+        localVarQueryParams.add(new Pair("Version","2021-12-16"));
+        localVarQueryParams.add(new Pair("ApiAction","createManualLabel"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-02-10"));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json", "text/plain"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call createManualLabelValidateBeforeCall(ManualLabelCreateReq body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling createManualLabel(Async)");
+        }
+
+        com.squareup.okhttp.Call call = createManualLabelCall(body, progressListener, progressRequestListener);
+        return call;
+
+
+
+
+
+    }
+
+    /**
+     * 创建人工标签
+     * 
+     * @param body  (required)
+     * @return CommonLabelId
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public CommonLabelId createManualLabel(ManualLabelCreateReq body) throws ApiException {
+        ApiResponse<CommonLabelId> resp = createManualLabelWithHttpInfo(body);
+        return resp.getData();
+    }
+
+    /**
+     * 创建人工标签
+     * 
+     * @param body  (required)
+     * @return ApiResponse&lt;CommonLabelId&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<CommonLabelId> createManualLabelWithHttpInfo(ManualLabelCreateReq body) throws ApiException {
+        com.squareup.okhttp.Call call = createManualLabelValidateBeforeCall(body, null, null);
+        Type localVarReturnType = new TypeToken<CommonLabelId>(){}.getType();
+
+        String[] localVarAccepts = {
+            "application/json", "text/plain"
+        };
+
+        return apiClient.execute(call, localVarReturnType, localVarAccepts);
+    }
+
+    /**
+     * 创建人工标签 (asynchronously)
+     * 
+     * @param body  (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createManualLabelAsync(ManualLabelCreateReq body, final ApiCallback<CommonLabelId> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        String[] localVarAccepts = {
+            "application/json", "text/plain"
+        };
+
+        com.squareup.okhttp.Call call = createManualLabelValidateBeforeCall(body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<CommonLabelId>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, localVarAccepts, callback);
+        return call;
+    }
+    /**
+     * Build call for getHistoryData
+     * @param id 标签id (required)
+     * @param startDate 开始日期 (required)
+     * @param endDate 结束日期 (required)
+     * @param showNum 展示数量 (required)
+     * @param xTenant 项目ID (required)
+     * @param period 周期 (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getHistoryDataCall(Integer id, String startDate, String endDate, Integer showNum, Long xTenant, String period, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (id != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("id", id));
+        if (period != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("period", period));
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("startDate", startDate));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("endDate", endDate));
+        if (showNum != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("showNum", showNum));
+
+
+        localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
+        localVarQueryParams.add(new Pair("Version","2021-12-16"));
+        localVarQueryParams.add(new Pair("ApiAction","getHistoryData"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-02-10"));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        if (xTenant != null)
+        localVarHeaderParams.put("X-Tenant", apiClient.parameterToString(xTenant));
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json", "text/plain"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getHistoryDataValidateBeforeCall(Integer id, String startDate, String endDate, Integer showNum, Long xTenant, String period, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getHistoryData(Async)");
+        }
+        // verify the required parameter 'startDate' is set
+        if (startDate == null) {
+            throw new ApiException("Missing the required parameter 'startDate' when calling getHistoryData(Async)");
+        }
+        // verify the required parameter 'endDate' is set
+        if (endDate == null) {
+            throw new ApiException("Missing the required parameter 'endDate' when calling getHistoryData(Async)");
+        }
+        // verify the required parameter 'showNum' is set
+        if (showNum == null) {
+            throw new ApiException("Missing the required parameter 'showNum' when calling getHistoryData(Async)");
+        }
+        // verify the required parameter 'xTenant' is set
+        if (xTenant == null) {
+            throw new ApiException("Missing the required parameter 'xTenant' when calling getHistoryData(Async)");
+        }
+
+        com.squareup.okhttp.Call call = getHistoryDataCall(id, startDate, endDate, showNum, xTenant, period, progressListener, progressRequestListener);
+        return call;
+
+
+
+
+
+    }
+
+    /**
+     * 标签运行结果历史数据
+     * 
+     * @param id 标签id (required)
+     * @param startDate 开始日期 (required)
+     * @param endDate 结束日期 (required)
+     * @param showNum 展示数量 (required)
+     * @param xTenant 项目ID (required)
+     * @param period 周期 (optional)
+     * @return CommonListLabelResultData
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public CommonListLabelResultData getHistoryData(Integer id, String startDate, String endDate, Integer showNum, Long xTenant, String period) throws ApiException {
+        ApiResponse<CommonListLabelResultData> resp = getHistoryDataWithHttpInfo(id, startDate, endDate, showNum, xTenant, period);
+        return resp.getData();
+    }
+
+    /**
+     * 标签运行结果历史数据
+     * 
+     * @param id 标签id (required)
+     * @param startDate 开始日期 (required)
+     * @param endDate 结束日期 (required)
+     * @param showNum 展示数量 (required)
+     * @param xTenant 项目ID (required)
+     * @param period 周期 (optional)
+     * @return ApiResponse&lt;CommonListLabelResultData&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<CommonListLabelResultData> getHistoryDataWithHttpInfo(Integer id, String startDate, String endDate, Integer showNum, Long xTenant, String period) throws ApiException {
+        com.squareup.okhttp.Call call = getHistoryDataValidateBeforeCall(id, startDate, endDate, showNum, xTenant, period, null, null);
+        Type localVarReturnType = new TypeToken<CommonListLabelResultData>(){}.getType();
+
+        String[] localVarAccepts = {
+            "application/json", "text/plain"
+        };
+
+        return apiClient.execute(call, localVarReturnType, localVarAccepts);
+    }
+
+    /**
+     * 标签运行结果历史数据 (asynchronously)
+     * 
+     * @param id 标签id (required)
+     * @param startDate 开始日期 (required)
+     * @param endDate 结束日期 (required)
+     * @param showNum 展示数量 (required)
+     * @param xTenant 项目ID (required)
+     * @param period 周期 (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getHistoryDataAsync(Integer id, String startDate, String endDate, Integer showNum, Long xTenant, String period, final ApiCallback<CommonListLabelResultData> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        String[] localVarAccepts = {
+            "application/json", "text/plain"
+        };
+
+        com.squareup.okhttp.Call call = getHistoryDataValidateBeforeCall(id, startDate, endDate, showNum, xTenant, period, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<CommonListLabelResultData>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, localVarAccepts, callback);
+        return call;
+    }
     /**
      * Build call for getLabelDesc
      * @param id 标签ID (required)
@@ -367,9 +702,323 @@ public class LabelApi {
         return call;
     }
     /**
+     * Build call for getLabels
+     * @param xTenant 项目ID (required)
+     * @param subjectId  (optional)
+     * @param type  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getLabelsCall(Long xTenant, Integer subjectId, String type, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (subjectId != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("subjectId", subjectId));
+        if (type != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("type", type));
+
+
+        localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
+        localVarQueryParams.add(new Pair("Version","2021-12-16"));
+        localVarQueryParams.add(new Pair("ApiAction","getLabels"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-02-10"));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        if (xTenant != null)
+        localVarHeaderParams.put("X-Tenant", apiClient.parameterToString(xTenant));
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json", "text/plain"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getLabelsValidateBeforeCall(Long xTenant, Integer subjectId, String type, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'xTenant' is set
+        if (xTenant == null) {
+            throw new ApiException("Missing the required parameter 'xTenant' when calling getLabels(Async)");
+        }
+
+        com.squareup.okhttp.Call call = getLabelsCall(xTenant, subjectId, type, progressListener, progressRequestListener);
+        return call;
+
+
+
+
+
+    }
+
+    /**
+     * 获取项目下标签列表
+     * 
+     * @param xTenant 项目ID (required)
+     * @param subjectId  (optional)
+     * @param type  (optional)
+     * @return CommonListLabelMetaInfo
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public CommonListLabelMetaInfo getLabels(Long xTenant, Integer subjectId, String type) throws ApiException {
+        ApiResponse<CommonListLabelMetaInfo> resp = getLabelsWithHttpInfo(xTenant, subjectId, type);
+        return resp.getData();
+    }
+
+    /**
+     * 获取项目下标签列表
+     * 
+     * @param xTenant 项目ID (required)
+     * @param subjectId  (optional)
+     * @param type  (optional)
+     * @return ApiResponse&lt;CommonListLabelMetaInfo&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<CommonListLabelMetaInfo> getLabelsWithHttpInfo(Long xTenant, Integer subjectId, String type) throws ApiException {
+        com.squareup.okhttp.Call call = getLabelsValidateBeforeCall(xTenant, subjectId, type, null, null);
+        Type localVarReturnType = new TypeToken<CommonListLabelMetaInfo>(){}.getType();
+
+        String[] localVarAccepts = {
+            "application/json", "text/plain"
+        };
+
+        return apiClient.execute(call, localVarReturnType, localVarAccepts);
+    }
+
+    /**
+     * 获取项目下标签列表 (asynchronously)
+     * 
+     * @param xTenant 项目ID (required)
+     * @param subjectId  (optional)
+     * @param type  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getLabelsAsync(Long xTenant, Integer subjectId, String type, final ApiCallback<CommonListLabelMetaInfo> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        String[] localVarAccepts = {
+            "application/json", "text/plain"
+        };
+
+        com.squareup.okhttp.Call call = getLabelsValidateBeforeCall(xTenant, subjectId, type, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<CommonListLabelMetaInfo>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, localVarAccepts, callback);
+        return call;
+    }
+    /**
+     * Build call for getLatestHistoryData
+     * @param id 标签id (required)
+     * @param showNum 展示数量 (required)
+     * @param xTenant 项目ID (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getLatestHistoryDataCall(Integer id, Integer showNum, Long xTenant, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (id != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("id", id));
+        if (showNum != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("showNum", showNum));
+
+
+        localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
+        localVarQueryParams.add(new Pair("Version","2021-12-16"));
+        localVarQueryParams.add(new Pair("ApiAction","getLatestHistoryData"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-02-10"));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        if (xTenant != null)
+        localVarHeaderParams.put("X-Tenant", apiClient.parameterToString(xTenant));
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json", "text/plain"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getLatestHistoryDataValidateBeforeCall(Integer id, Integer showNum, Long xTenant, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getLatestHistoryData(Async)");
+        }
+        // verify the required parameter 'showNum' is set
+        if (showNum == null) {
+            throw new ApiException("Missing the required parameter 'showNum' when calling getLatestHistoryData(Async)");
+        }
+        // verify the required parameter 'xTenant' is set
+        if (xTenant == null) {
+            throw new ApiException("Missing the required parameter 'xTenant' when calling getLatestHistoryData(Async)");
+        }
+
+        com.squareup.okhttp.Call call = getLatestHistoryDataCall(id, showNum, xTenant, progressListener, progressRequestListener);
+        return call;
+
+
+
+
+
+    }
+
+    /**
+     * 标签上一次运行结果数据
+     * 
+     * @param id 标签id (required)
+     * @param showNum 展示数量 (required)
+     * @param xTenant 项目ID (required)
+     * @return CommonLabelResultData
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public CommonLabelResultData getLatestHistoryData(Integer id, Integer showNum, Long xTenant) throws ApiException {
+        ApiResponse<CommonLabelResultData> resp = getLatestHistoryDataWithHttpInfo(id, showNum, xTenant);
+        return resp.getData();
+    }
+
+    /**
+     * 标签上一次运行结果数据
+     * 
+     * @param id 标签id (required)
+     * @param showNum 展示数量 (required)
+     * @param xTenant 项目ID (required)
+     * @return ApiResponse&lt;CommonLabelResultData&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<CommonLabelResultData> getLatestHistoryDataWithHttpInfo(Integer id, Integer showNum, Long xTenant) throws ApiException {
+        com.squareup.okhttp.Call call = getLatestHistoryDataValidateBeforeCall(id, showNum, xTenant, null, null);
+        Type localVarReturnType = new TypeToken<CommonLabelResultData>(){}.getType();
+
+        String[] localVarAccepts = {
+            "application/json", "text/plain"
+        };
+
+        return apiClient.execute(call, localVarReturnType, localVarAccepts);
+    }
+
+    /**
+     * 标签上一次运行结果数据 (asynchronously)
+     * 
+     * @param id 标签id (required)
+     * @param showNum 展示数量 (required)
+     * @param xTenant 项目ID (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getLatestHistoryDataAsync(Integer id, Integer showNum, Long xTenant, final ApiCallback<CommonLabelResultData> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        String[] localVarAccepts = {
+            "application/json", "text/plain"
+        };
+
+        com.squareup.okhttp.Call call = getLatestHistoryDataValidateBeforeCall(id, showNum, xTenant, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<CommonLabelResultData>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, localVarAccepts, callback);
+        return call;
+    }
+    /**
      * Build call for getOnlineTagsProp
      * @param tenantCode 租户ID (required)
-     * @param infoType 查询类型两个取值：label或property (required)
+     * @param infoType 查询类型取值：label、property、behavior、detail (required)
      * @param current 当前页 (optional)
      * @param pageSize 分页大小 (optional)
      * @param idType id类型 (optional)
@@ -454,10 +1103,10 @@ public class LabelApi {
     }
 
     /**
-     * 获取在线可用标签/属性列表
+     * 获取在线可用标签/属性/明细/行为事件列表
      * 
      * @param tenantCode 租户ID (required)
-     * @param infoType 查询类型两个取值：label或property (required)
+     * @param infoType 查询类型取值：label、property、behavior、detail (required)
      * @param current 当前页 (optional)
      * @param pageSize 分页大小 (optional)
      * @param idType id类型 (optional)
@@ -470,10 +1119,10 @@ public class LabelApi {
     }
 
     /**
-     * 获取在线可用标签/属性列表
+     * 获取在线可用标签/属性/明细/行为事件列表
      * 
      * @param tenantCode 租户ID (required)
-     * @param infoType 查询类型两个取值：label或property (required)
+     * @param infoType 查询类型取值：label、property、behavior、detail (required)
      * @param current 当前页 (optional)
      * @param pageSize 分页大小 (optional)
      * @param idType id类型 (optional)
@@ -492,10 +1141,10 @@ public class LabelApi {
     }
 
     /**
-     * 获取在线可用标签/属性列表 (asynchronously)
+     * 获取在线可用标签/属性/明细/行为事件列表 (asynchronously)
      * 
      * @param tenantCode 租户ID (required)
-     * @param infoType 查询类型两个取值：label或property (required)
+     * @param infoType 查询类型取值：label、property、behavior、detail (required)
      * @param current 当前页 (optional)
      * @param pageSize 分页大小 (optional)
      * @param idType id类型 (optional)
@@ -530,6 +1179,306 @@ public class LabelApi {
 
         com.squareup.okhttp.Call call = getOnlineTagsPropValidateBeforeCall(tenantCode, infoType, current, pageSize, idType, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<CommonOnlineTagInfoResp>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, localVarAccepts, callback);
+        return call;
+    }
+    /**
+     * Build call for rerunLabel
+     * @param body  (required)
+     * @param xTenant 项目ID (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call rerunLabelCall(RerunRequest body, Long xTenant, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+
+        localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
+        localVarQueryParams.add(new Pair("Version","2021-12-16"));
+        localVarQueryParams.add(new Pair("ApiAction","rerunLabel"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-02-10"));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        if (xTenant != null)
+        localVarHeaderParams.put("X-Tenant", apiClient.parameterToString(xTenant));
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call rerunLabelValidateBeforeCall(RerunRequest body, Long xTenant, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling rerunLabel(Async)");
+        }
+        // verify the required parameter 'xTenant' is set
+        if (xTenant == null) {
+            throw new ApiException("Missing the required parameter 'xTenant' when calling rerunLabel(Async)");
+        }
+
+        com.squareup.okhttp.Call call = rerunLabelCall(body, xTenant, progressListener, progressRequestListener);
+        return call;
+
+
+
+
+
+    }
+
+    /**
+     * 标签重跑
+     * 
+     * @param body  (required)
+     * @param xTenant 项目ID (required)
+     * @return CommonBoolean
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public CommonBoolean rerunLabel(RerunRequest body, Long xTenant) throws ApiException {
+        ApiResponse<CommonBoolean> resp = rerunLabelWithHttpInfo(body, xTenant);
+        return resp.getData();
+    }
+
+    /**
+     * 标签重跑
+     * 
+     * @param body  (required)
+     * @param xTenant 项目ID (required)
+     * @return ApiResponse&lt;CommonBoolean&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<CommonBoolean> rerunLabelWithHttpInfo(RerunRequest body, Long xTenant) throws ApiException {
+        com.squareup.okhttp.Call call = rerunLabelValidateBeforeCall(body, xTenant, null, null);
+        Type localVarReturnType = new TypeToken<CommonBoolean>(){}.getType();
+
+        String[] localVarAccepts = {
+            "application/json"
+        };
+
+        return apiClient.execute(call, localVarReturnType, localVarAccepts);
+    }
+
+    /**
+     * 标签重跑 (asynchronously)
+     * 
+     * @param body  (required)
+     * @param xTenant 项目ID (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call rerunLabelAsync(RerunRequest body, Long xTenant, final ApiCallback<CommonBoolean> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        String[] localVarAccepts = {
+            "application/json"
+        };
+
+        com.squareup.okhttp.Call call = rerunLabelValidateBeforeCall(body, xTenant, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<CommonBoolean>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, localVarAccepts, callback);
+        return call;
+    }
+    /**
+     * Build call for uploadLabelData
+     * @param file  (required)
+     * @param xTenant 项目ID (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call uploadLabelDataCall(File file, Long xTenant, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+
+        localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
+        localVarQueryParams.add(new Pair("Version","2021-12-16"));
+        localVarQueryParams.add(new Pair("ApiAction","uploadLabelData"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-02-10"));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        if (xTenant != null)
+        localVarHeaderParams.put("X-Tenant", apiClient.parameterToString(xTenant));
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        if (file != null)
+        localVarFormParams.put("file", file);
+
+        final String[] localVarAccepts = {
+            "application/json", "text/plain"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "multipart/form-data"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call uploadLabelDataValidateBeforeCall(File file, Long xTenant, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'file' is set
+        if (file == null) {
+            throw new ApiException("Missing the required parameter 'file' when calling uploadLabelData(Async)");
+        }
+        // verify the required parameter 'xTenant' is set
+        if (xTenant == null) {
+            throw new ApiException("Missing the required parameter 'xTenant' when calling uploadLabelData(Async)");
+        }
+
+        com.squareup.okhttp.Call call = uploadLabelDataCall(file, xTenant, progressListener, progressRequestListener);
+        return call;
+
+
+
+
+
+    }
+
+    /**
+     * 上传标签文件
+     * 
+     * @param file  (required)
+     * @param xTenant 项目ID (required)
+     * @return CommonDataModelId
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public CommonDataModelId uploadLabelData(File file, Long xTenant) throws ApiException {
+        ApiResponse<CommonDataModelId> resp = uploadLabelDataWithHttpInfo(file, xTenant);
+        return resp.getData();
+    }
+
+    /**
+     * 上传标签文件
+     * 
+     * @param file  (required)
+     * @param xTenant 项目ID (required)
+     * @return ApiResponse&lt;CommonDataModelId&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<CommonDataModelId> uploadLabelDataWithHttpInfo(File file, Long xTenant) throws ApiException {
+        com.squareup.okhttp.Call call = uploadLabelDataValidateBeforeCall(file, xTenant, null, null);
+        Type localVarReturnType = new TypeToken<CommonDataModelId>(){}.getType();
+
+        String[] localVarAccepts = {
+            "application/json", "text/plain"
+        };
+
+        return apiClient.execute(call, localVarReturnType, localVarAccepts);
+    }
+
+    /**
+     * 上传标签文件 (asynchronously)
+     * 
+     * @param file  (required)
+     * @param xTenant 项目ID (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call uploadLabelDataAsync(File file, Long xTenant, final ApiCallback<CommonDataModelId> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        String[] localVarAccepts = {
+            "application/json", "text/plain"
+        };
+
+        com.squareup.okhttp.Call call = uploadLabelDataValidateBeforeCall(file, xTenant, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<CommonDataModelId>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, localVarAccepts, callback);
         return call;
     }

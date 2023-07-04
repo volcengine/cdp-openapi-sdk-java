@@ -31,7 +31,11 @@ import code.byted.cdp.model.CheckRealtimeRuleRequest;
 import code.byted.cdp.model.CheckRealtimeRuleResponse;
 import code.byted.cdp.model.IDMReq;
 import code.byted.cdp.model.IDMResp;
+import code.byted.cdp.model.OnlineGetUserDetailAndEventRequest;
+import code.byted.cdp.model.OnlineGetUserDetailAndEventResp;
 import code.byted.cdp.model.OnlineGetUserProfileRequest;
+import code.byted.cdp.model.OnlineGetUserSegmentRequest;
+import code.byted.cdp.model.OnlineGetUserSegmentResp;
 import code.byted.cdp.model.OnlineUserProfileRespWithPrivacy;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -83,6 +87,21 @@ public class OnlineApiTest {
         // TODO: test validations
     }
     /**
+     * 查询用户的行为和明细
+     *
+     * 
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void getUserDetailAndEventTest() throws Exception {
+        OnlineGetUserDetailAndEventRequest body = null;
+        OnlineGetUserDetailAndEventResp response = api.getUserDetailAndEvent(body);
+
+        // TODO: test validations
+    }
+    /**
      * 查询标签和属性
      *
      * 
@@ -94,6 +113,21 @@ public class OnlineApiTest {
     public void getUserProfileWithPrivacyTest() throws Exception {
         OnlineGetUserProfileRequest body = null;
         OnlineUserProfileRespWithPrivacy response = api.getUserProfileWithPrivacy(body);
+
+        // TODO: test validations
+    }
+    /**
+     * 查询用户是否命中分群v2
+     *
+     * 
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void getUserSegmentV2Test() throws Exception {
+        OnlineGetUserSegmentRequest body = null;
+        OnlineGetUserSegmentResp response = api.getUserSegmentV2(body);
 
         // TODO: test validations
     }

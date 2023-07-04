@@ -26,7 +26,7 @@
 
 package code.byted.cdp;
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-04-18T11:26:59.028+08:00[Asia/Shanghai]")public class StringUtil {
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-07-04T11:23:30.393+08:00[Asia/Shanghai]")public class StringUtil {
   /**
    * Check if the given array contains the given value (with case-insensitive comparison).
    *
