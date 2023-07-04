@@ -34,7 +34,7 @@ import java.util.Map;
  * MapString
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-07-04T11:23:30.393+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-07-04T16:56:05.487+08:00[Asia/Shanghai]")
 public class MapString extends HashMap<String, String> {
 
   @Override

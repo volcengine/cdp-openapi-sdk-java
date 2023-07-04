@@ -31,7 +31,7 @@ import code.byted.cdp.Pair;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-07-04T11:23:30.393+08:00[Asia/Shanghai]")public class OAuth implements Authentication {
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-07-04T16:56:05.487+08:00[Asia/Shanghai]")public class OAuth implements Authentication {
   private String accessToken;
 
   public String getAccessToken() {

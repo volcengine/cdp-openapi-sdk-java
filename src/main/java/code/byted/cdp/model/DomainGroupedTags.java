@@ -42,7 +42,7 @@ import java.util.List;
  * DomainGroupedTags
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-07-04T11:23:30.393+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-07-04T16:56:05.487+08:00[Asia/Shanghai]")
 public class DomainGroupedTags {
   @SerializedName("tags")
   private List<ProfileTag> tags = null;

@@ -99,7 +99,7 @@ public class LabelApi {
         localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
         localVarQueryParams.add(new Pair("Version","2021-12-16"));
         localVarQueryParams.add(new Pair("ApiAction","createManualLabel"));
-        localVarQueryParams.add(new Pair("ApiVersion","2023-02-10"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-06-20"));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -253,7 +253,7 @@ public class LabelApi {
         localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
         localVarQueryParams.add(new Pair("Version","2021-12-16"));
         localVarQueryParams.add(new Pair("ApiAction","getHistoryData"));
-        localVarQueryParams.add(new Pair("ApiVersion","2023-02-10"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-06-20"));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (xTenant != null)
@@ -728,7 +728,7 @@ public class LabelApi {
         localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
         localVarQueryParams.add(new Pair("Version","2021-12-16"));
         localVarQueryParams.add(new Pair("ApiAction","getLabels"));
-        localVarQueryParams.add(new Pair("ApiVersion","2023-02-10"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-06-20"));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (xTenant != null)
@@ -881,7 +881,7 @@ public class LabelApi {
         localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
         localVarQueryParams.add(new Pair("Version","2021-12-16"));
         localVarQueryParams.add(new Pair("ApiAction","getLatestHistoryData"));
-        localVarQueryParams.add(new Pair("ApiVersion","2023-02-10"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-06-20"));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (xTenant != null)
@@ -1048,7 +1048,7 @@ public class LabelApi {
         localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
         localVarQueryParams.add(new Pair("Version","2021-12-16"));
         localVarQueryParams.add(new Pair("ApiAction","getOnlineTagsProp"));
-        localVarQueryParams.add(new Pair("ApiVersion","2023-02-10"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-06-20"));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1204,7 +1204,7 @@ public class LabelApi {
         localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
         localVarQueryParams.add(new Pair("Version","2021-12-16"));
         localVarQueryParams.add(new Pair("ApiAction","rerunLabel"));
-        localVarQueryParams.add(new Pair("ApiVersion","2023-02-10"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-06-20"));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (xTenant != null)
@@ -1353,7 +1353,7 @@ public class LabelApi {
         localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
         localVarQueryParams.add(new Pair("Version","2021-12-16"));
         localVarQueryParams.add(new Pair("ApiAction","uploadLabelData"));
-        localVarQueryParams.add(new Pair("ApiVersion","2023-02-10"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-06-20"));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (xTenant != null)

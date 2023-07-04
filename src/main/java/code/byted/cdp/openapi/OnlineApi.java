@@ -385,7 +385,7 @@ public class OnlineApi {
         localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
         localVarQueryParams.add(new Pair("Version","2021-12-16"));
         localVarQueryParams.add(new Pair("ApiAction","getUserDetailAndEvent"));
-        localVarQueryParams.add(new Pair("ApiVersion","2023-02-10"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-06-20"));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -663,7 +663,7 @@ public class OnlineApi {
         localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
         localVarQueryParams.add(new Pair("Version","2021-12-16"));
         localVarQueryParams.add(new Pair("ApiAction","getUserSegmentV2"));
-        localVarQueryParams.add(new Pair("ApiVersion","2023-02-10"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-06-20"));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
