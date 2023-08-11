@@ -31,7 +31,7 @@ import code.byted.cdp.Pair;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-04-18T11:26:59.028+08:00[Asia/Shanghai]")public class ApiKeyAuth implements Authentication {
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-11T11:38:37.562+08:00[Asia/Shanghai]")public class ApiKeyAuth implements Authentication {
   private final String location;
   private final String paramName;
 

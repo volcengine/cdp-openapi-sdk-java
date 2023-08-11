@@ -43,7 +43,7 @@ import java.util.List;
  * 标签树结点全部信息,部分字段在特定查询case下非null,返回值时为root层级结点List
  */
 @Schema(description = "标签树结点全部信息,部分字段在特定查询case下非null,返回值时为root层级结点List")
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-04-18T11:26:59.028+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-11T11:38:37.562+08:00[Asia/Shanghai]")
 public class LabelTreeNode {
   @SerializedName("id")
   private Integer id = null;

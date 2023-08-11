@@ -26,7 +26,7 @@
 
 package code.byted.cdp;
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-04-18T11:26:59.028+08:00[Asia/Shanghai]")public class Pair {
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-11T11:38:37.562+08:00[Asia/Shanghai]")public class Pair {
     private String name = "";
     private String value = "";
 

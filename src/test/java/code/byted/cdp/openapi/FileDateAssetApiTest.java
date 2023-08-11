@@ -58,9 +58,8 @@ public class FileDateAssetApiTest {
     public void downloadFileDateAssetTest() throws Exception {
         String xTenant = null;
         Integer taskId = null;
-        Integer segId = null;
-        String file = null;
-        File response = api.downloadFileDateAsset(xTenant, taskId, segId, file);
+        String filePath = null;
+        File response = api.downloadFileDateAsset(xTenant, taskId, filePath);
 
         // TODO: test validations
     }

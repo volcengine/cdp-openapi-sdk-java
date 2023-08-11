@@ -28,7 +28,6 @@ package code.byted.cdp.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import code.byted.cdp.model.TagValueResp;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -42,13 +41,13 @@ import java.util.List;
  * ByteDanceSeqResponseTagValueResp
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-04-18T11:26:59.028+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-11T11:38:37.562+08:00[Asia/Shanghai]")
 public class ByteDanceSeqResponseTagValueResp {
   @SerializedName("code")
   private Long code = null;
 
   @SerializedName("data")
-  private List<TagValueResp> data = null;
+  private List<Object> data = null;
 
   public ByteDanceSeqResponseTagValueResp code(Long code) {
     this.code = code;
@@ -68,14 +67,14 @@ public class ByteDanceSeqResponseTagValueResp {
     this.code = code;
   }
 
-  public ByteDanceSeqResponseTagValueResp data(List<TagValueResp> data) {
+  public ByteDanceSeqResponseTagValueResp data(List<Object> data) {
     this.data = data;
     return this;
   }
 
-  public ByteDanceSeqResponseTagValueResp addDataItem(TagValueResp dataItem) {
+  public ByteDanceSeqResponseTagValueResp addDataItem(Object dataItem) {
     if (this.data == null) {
-      this.data = new ArrayList<TagValueResp>();
+      this.data = new ArrayList<Object>();
     }
     this.data.add(dataItem);
     return this;
@@ -86,11 +85,11 @@ public class ByteDanceSeqResponseTagValueResp {
    * @return data
   **/
   @Schema(description = "")
-  public List<TagValueResp> getData() {
+  public List<Object> getData() {
     return data;
   }
 
-  public void setData(List<TagValueResp> data) {
+  public void setData(List<Object> data) {
     this.data = data;
   }
 
