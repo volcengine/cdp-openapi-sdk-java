@@ -26,7 +26,7 @@
 
 package code.byted.cdp;
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-07-04T16:56:05.487+08:00[Asia/Shanghai]")public class Configuration {
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-11T11:20:29.425+08:00[Asia/Shanghai]")public class Configuration {
     private static ApiClient defaultApiClient = new ApiClient("", "", "");
 
     /**

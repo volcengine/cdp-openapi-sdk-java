@@ -125,7 +125,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("Swagger-Codegen/1.19.1/java");
+        setUserAgent("Swagger-Codegen/1.0.0-SNAPSHOT/java");
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications = new HashMap<String, Authentication>();
@@ -1072,7 +1072,7 @@ public class ApiClient {
         });
         try {
             URI uri = new URI(url);
-            sign.sign(reqBuilder, this.credentials, reqBody, uri.getHost(), uri.getPath(), method, queryList, headers);
+            sign.sign(reqBuilder, this.credentials, reqBody, uri.getHost(), uri.getPort(), uri.getPath(), method, queryList, headers);
         } catch (Exception e) {
             throw new ApiException(e);
         }
@@ -1392,7 +1392,12 @@ class SignerV4Impl {
         URLENCODER.set('~');
     }
 
-    public void sign(Request.Builder request, Credentials credentials, RequestBody body, String host, String path, String method, List<Pair> queryList, List<Pair> headers) throws Exception {
+    public void sign(Request.Builder request, Credentials credentials, RequestBody body, String host , int port, String path, String method, List<Pair> queryList, List<Pair> headers) throws Exception {
+        if (port > 0 && port != 80 && port != 443) {
+            host = host + ":" + port;
+        }
+        path = "/open_platform/openapi";
+
         RequestParam requestParam = RequestParam.builder()
                 .isSignUrl(false)
                 .body(body2Bytes(body))

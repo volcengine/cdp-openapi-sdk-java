@@ -42,7 +42,7 @@ import java.util.List;
  * InlineResponse2003
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-07-04T16:56:05.487+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-11T11:20:29.425+08:00[Asia/Shanghai]")
 public class InlineResponse2003 {
   @SerializedName("code")
   private Long code = null;
