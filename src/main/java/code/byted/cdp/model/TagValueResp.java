@@ -28,7 +28,6 @@ package code.byted.cdp.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import code.byted.cdp.model.OpenAPiInsightReportResp;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -37,72 +36,51 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * InlineResponse2002
+ * TagValueResp
  */
 
 @javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-25T10:31:52.572+08:00[Asia/Shanghai]")
-public class InlineResponse2002 {
-  @SerializedName("code")
-  private Long code = null;
+public class TagValueResp {
+  @SerializedName("name")
+  private String name = null;
 
-  @SerializedName("msg")
-  private String msg = null;
+  @SerializedName("value")
+  private Object value = null;
 
-  @SerializedName("data")
-  private OpenAPiInsightReportResp data = null;
-
-  public InlineResponse2002 code(Long code) {
-    this.code = code;
+  public TagValueResp name(String name) {
+    this.name = name;
     return this;
   }
 
    /**
-   * Get code
-   * @return code
+   * Get name
+   * @return name
   **/
-  @Schema(description = "")
-  public Long getCode() {
-    return code;
+  @Schema(required = true, description = "")
+  public String getName() {
+    return name;
   }
 
-  public void setCode(Long code) {
-    this.code = code;
+  public void setName(String name) {
+    this.name = name;
   }
 
-  public InlineResponse2002 msg(String msg) {
-    this.msg = msg;
+  public TagValueResp value(Object value) {
+    this.value = value;
     return this;
   }
 
    /**
-   * Get msg
-   * @return msg
+   * Get value
+   * @return value
   **/
   @Schema(description = "")
-  public String getMsg() {
-    return msg;
+  public Object getValue() {
+    return value;
   }
 
-  public void setMsg(String msg) {
-    this.msg = msg;
-  }
-
-  public InlineResponse2002 data(OpenAPiInsightReportResp data) {
-    this.data = data;
-    return this;
-  }
-
-   /**
-   * Get data
-   * @return data
-  **/
-  @Schema(description = "")
-  public OpenAPiInsightReportResp getData() {
-    return data;
-  }
-
-  public void setData(OpenAPiInsightReportResp data) {
-    this.data = data;
+  public void setValue(Object value) {
+    this.value = value;
   }
 
 
@@ -114,26 +92,24 @@ public class InlineResponse2002 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse2002 inlineResponse2002 = (InlineResponse2002) o;
-    return Objects.equals(this.code, inlineResponse2002.code) &&
-        Objects.equals(this.msg, inlineResponse2002.msg) &&
-        Objects.equals(this.data, inlineResponse2002.data);
+    TagValueResp tagValueResp = (TagValueResp) o;
+    return Objects.equals(this.name, tagValueResp.name) &&
+        Objects.equals(this.value, tagValueResp.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, msg, data);
+    return Objects.hash(name, value);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse2002 {\n");
+    sb.append("class TagValueResp {\n");
     
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    msg: ").append(toIndentedString(msg)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -28,7 +28,6 @@ package code.byted.cdp.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import code.byted.cdp.model.SegSimpleInfo;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -36,13 +35,11 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 /**
  * FileDataTaskSimpleResult
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-11T11:20:29.425+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-25T10:31:52.572+08:00[Asia/Shanghai]")
 public class FileDataTaskSimpleResult {
   @SerializedName("taskId")
   private Integer taskId = null;
@@ -50,8 +47,11 @@ public class FileDataTaskSimpleResult {
   @SerializedName("taskName")
   private String taskName = null;
 
-  @SerializedName("segInfos")
-  private List<SegSimpleInfo> segInfos = null;
+  @SerializedName("taskStatus")
+  private String taskStatus = null;
+
+  @SerializedName("filePath")
+  private String filePath = null;
 
   public FileDataTaskSimpleResult taskId(Integer taskId) {
     this.taskId = taskId;
@@ -89,30 +89,40 @@ public class FileDataTaskSimpleResult {
     this.taskName = taskName;
   }
 
-  public FileDataTaskSimpleResult segInfos(List<SegSimpleInfo> segInfos) {
-    this.segInfos = segInfos;
-    return this;
-  }
-
-  public FileDataTaskSimpleResult addSegInfosItem(SegSimpleInfo segInfosItem) {
-    if (this.segInfos == null) {
-      this.segInfos = new ArrayList<SegSimpleInfo>();
-    }
-    this.segInfos.add(segInfosItem);
+  public FileDataTaskSimpleResult taskStatus(String taskStatus) {
+    this.taskStatus = taskStatus;
     return this;
   }
 
    /**
-   * Get segInfos
-   * @return segInfos
+   * Get taskStatus
+   * @return taskStatus
   **/
   @Schema(description = "")
-  public List<SegSimpleInfo> getSegInfos() {
-    return segInfos;
+  public String getTaskStatus() {
+    return taskStatus;
   }
 
-  public void setSegInfos(List<SegSimpleInfo> segInfos) {
-    this.segInfos = segInfos;
+  public void setTaskStatus(String taskStatus) {
+    this.taskStatus = taskStatus;
+  }
+
+  public FileDataTaskSimpleResult filePath(String filePath) {
+    this.filePath = filePath;
+    return this;
+  }
+
+   /**
+   * Get filePath
+   * @return filePath
+  **/
+  @Schema(description = "")
+  public String getFilePath() {
+    return filePath;
+  }
+
+  public void setFilePath(String filePath) {
+    this.filePath = filePath;
   }
 
 
@@ -127,12 +137,13 @@ public class FileDataTaskSimpleResult {
     FileDataTaskSimpleResult fileDataTaskSimpleResult = (FileDataTaskSimpleResult) o;
     return Objects.equals(this.taskId, fileDataTaskSimpleResult.taskId) &&
         Objects.equals(this.taskName, fileDataTaskSimpleResult.taskName) &&
-        Objects.equals(this.segInfos, fileDataTaskSimpleResult.segInfos);
+        Objects.equals(this.taskStatus, fileDataTaskSimpleResult.taskStatus) &&
+        Objects.equals(this.filePath, fileDataTaskSimpleResult.filePath);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(taskId, taskName, segInfos);
+    return Objects.hash(taskId, taskName, taskStatus, filePath);
   }
 
 
@@ -143,7 +154,8 @@ public class FileDataTaskSimpleResult {
     
     sb.append("    taskId: ").append(toIndentedString(taskId)).append("\n");
     sb.append("    taskName: ").append(toIndentedString(taskName)).append("\n");
-    sb.append("    segInfos: ").append(toIndentedString(segInfos)).append("\n");
+    sb.append("    taskStatus: ").append(toIndentedString(taskStatus)).append("\n");
+    sb.append("    filePath: ").append(toIndentedString(filePath)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -44,7 +44,7 @@ import java.util.List;
  * SummaryResult
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-11T11:20:29.425+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-25T10:31:52.572+08:00[Asia/Shanghai]")
 public class SummaryResult {
   @SerializedName("summary")
   private List<InsightSummarySegObj> summary = null;
