@@ -39,8 +39,8 @@ import java.io.IOException;
  * SegDetail
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-08T11:48:39.432+08:00[Asia/Shanghai]")
-public class SegDetail {
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-12T18:59:01.079+08:00[Asia/Shanghai]")
+public class SegDetail implements DataAssetDetail {
   @SerializedName("showIdm")
   private Boolean showIdm = null;
 
