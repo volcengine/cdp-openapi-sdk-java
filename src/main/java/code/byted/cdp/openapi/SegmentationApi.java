@@ -47,7 +47,11 @@ import code.byted.cdp.model.ByteDanceResponseSegmentationOnlineServiceEnableResp
 import code.byted.cdp.model.ByteDanceResponseSegmentationResp;
 import code.byted.cdp.model.ByteDanceResponseSegmentationUploadResp;
 import java.io.File;
+import code.byted.cdp.model.LegacyManualSegCreateRequest;
+import code.byted.cdp.model.LegacySegOpenApiInfoResponse;
 import code.byted.cdp.model.LegacyUploadedSegCreateRequest;
+import code.byted.cdp.model.SegOpenApiFileUploadResponse;
+import code.byted.cdp.model.SimplifiedSegCreateOrUpdateRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -74,6 +78,150 @@ public class SegmentationApi {
         this.apiClient = apiClient;
     }
 
+    /**
+     * Build call for createConditionalSegment
+     * @param tenantId  (required)
+     * @param body  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createConditionalSegmentCall(Integer tenantId, SimplifiedSegCreateOrUpdateRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        localVarQueryParams.add(new Pair("tenantId", tenantId.toString()));
+
+        localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
+        localVarQueryParams.add(new Pair("Version","2021-12-16"));
+        localVarQueryParams.add(new Pair("ApiAction","createConditionalSegment"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-08-08"));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "*/*"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "*/*"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call createConditionalSegmentValidateBeforeCall(Integer tenantId, SimplifiedSegCreateOrUpdateRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'tenantId' is set
+        if (tenantId == null) {
+            throw new ApiException("Missing the required parameter 'tenantId' when calling createConditionalSegment(Async)");
+        }
+
+        com.squareup.okhttp.Call call = createConditionalSegmentCall(tenantId, body, progressListener, progressRequestListener);
+        return call;
+
+
+
+
+
+    }
+
+    /**
+     * 创建离线规则-简化
+     * 
+     * @param tenantId  (required)
+     * @param body  (optional)
+     * @return LegacySegOpenApiInfoResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public LegacySegOpenApiInfoResponse createConditionalSegment(Integer tenantId, SimplifiedSegCreateOrUpdateRequest body) throws ApiException {
+        ApiResponse<LegacySegOpenApiInfoResponse> resp = createConditionalSegmentWithHttpInfo(tenantId, body);
+        return resp.getData();
+    }
+
+    /**
+     * 创建离线规则-简化
+     * 
+     * @param tenantId  (required)
+     * @param body  (optional)
+     * @return ApiResponse&lt;LegacySegOpenApiInfoResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<LegacySegOpenApiInfoResponse> createConditionalSegmentWithHttpInfo(Integer tenantId, SimplifiedSegCreateOrUpdateRequest body) throws ApiException {
+        com.squareup.okhttp.Call call = createConditionalSegmentValidateBeforeCall(tenantId, body, null, null);
+        Type localVarReturnType = new TypeToken<LegacySegOpenApiInfoResponse>(){}.getType();
+
+        String[] localVarAccepts = {
+            "*/*"
+        };
+
+        return apiClient.execute(call, localVarReturnType, localVarAccepts);
+    }
+
+    /**
+     * 创建离线规则-简化 (asynchronously)
+     * 
+     * @param tenantId  (required)
+     * @param body  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createConditionalSegmentAsync(Integer tenantId, SimplifiedSegCreateOrUpdateRequest body, final ApiCallback<LegacySegOpenApiInfoResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        String[] localVarAccepts = {
+            "*/*"
+        };
+
+        com.squareup.okhttp.Call call = createConditionalSegmentValidateBeforeCall(tenantId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<LegacySegOpenApiInfoResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, localVarAccepts, callback);
+        return call;
+    }
     /**
      * Build call for downloadSegFile
      * @param tenantId  (required)
@@ -240,6 +388,150 @@ public class SegmentationApi {
         return call;
     }
     /**
+     * Build call for legacyCreateManualSegment
+     * @param tenantId  (required)
+     * @param body  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call legacyCreateManualSegmentCall(Integer tenantId, LegacyManualSegCreateRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        localVarQueryParams.add(new Pair("tenantId", tenantId.toString()));
+
+        localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
+        localVarQueryParams.add(new Pair("Version","2021-12-16"));
+        localVarQueryParams.add(new Pair("ApiAction","legacyCreateManualSegment"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-08-08"));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "*/*"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "*/*"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call legacyCreateManualSegmentValidateBeforeCall(Integer tenantId, LegacyManualSegCreateRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'tenantId' is set
+        if (tenantId == null) {
+            throw new ApiException("Missing the required parameter 'tenantId' when calling legacyCreateManualSegment(Async)");
+        }
+
+        com.squareup.okhttp.Call call = legacyCreateManualSegmentCall(tenantId, body, progressListener, progressRequestListener);
+        return call;
+
+
+
+
+
+    }
+
+    /**
+     * 创建人工分群
+     * 
+     * @param tenantId  (required)
+     * @param body  (optional)
+     * @return LegacySegOpenApiInfoResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public LegacySegOpenApiInfoResponse legacyCreateManualSegment(Integer tenantId, LegacyManualSegCreateRequest body) throws ApiException {
+        ApiResponse<LegacySegOpenApiInfoResponse> resp = legacyCreateManualSegmentWithHttpInfo(tenantId, body);
+        return resp.getData();
+    }
+
+    /**
+     * 创建人工分群
+     * 
+     * @param tenantId  (required)
+     * @param body  (optional)
+     * @return ApiResponse&lt;LegacySegOpenApiInfoResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<LegacySegOpenApiInfoResponse> legacyCreateManualSegmentWithHttpInfo(Integer tenantId, LegacyManualSegCreateRequest body) throws ApiException {
+        com.squareup.okhttp.Call call = legacyCreateManualSegmentValidateBeforeCall(tenantId, body, null, null);
+        Type localVarReturnType = new TypeToken<LegacySegOpenApiInfoResponse>(){}.getType();
+
+        String[] localVarAccepts = {
+            "*/*"
+        };
+
+        return apiClient.execute(call, localVarReturnType, localVarAccepts);
+    }
+
+    /**
+     * 创建人工分群 (asynchronously)
+     * 
+     * @param tenantId  (required)
+     * @param body  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call legacyCreateManualSegmentAsync(Integer tenantId, LegacyManualSegCreateRequest body, final ApiCallback<LegacySegOpenApiInfoResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        String[] localVarAccepts = {
+            "*/*"
+        };
+
+        com.squareup.okhttp.Call call = legacyCreateManualSegmentValidateBeforeCall(tenantId, body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<LegacySegOpenApiInfoResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, localVarAccepts, callback);
+        return call;
+    }
+    /**
      * Build call for legacyCreateUploadSegment
      * @param body  (required)
      * @param tenantId  (required)
@@ -385,6 +677,146 @@ public class SegmentationApi {
         com.squareup.okhttp.Call call = legacyCreateUploadSegmentValidateBeforeCall(body, tenantId, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ByteDanceResponseRecordSegShardInfoResp>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, localVarAccepts, callback);
+        return call;
+    }
+    /**
+     * Build call for legacyDeleteSegment
+     * @param tenantId  (required)
+     * @param segId  (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call legacyDeleteSegmentCall(Integer tenantId, Integer segId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        localVarQueryParams.add(new Pair("tenantId", tenantId.toString()));
+        localVarQueryParams.add(new Pair("segId", segId.toString()));
+
+        localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
+        localVarQueryParams.add(new Pair("Version","2021-12-16"));
+        localVarQueryParams.add(new Pair("ApiAction","legacyDeleteSegment"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-08-08"));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call legacyDeleteSegmentValidateBeforeCall(Integer tenantId, Integer segId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'tenantId' is set
+        if (tenantId == null) {
+            throw new ApiException("Missing the required parameter 'tenantId' when calling legacyDeleteSegment(Async)");
+        }
+        // verify the required parameter 'segId' is set
+        if (segId == null) {
+            throw new ApiException("Missing the required parameter 'segId' when calling legacyDeleteSegment(Async)");
+        }
+
+        com.squareup.okhttp.Call call = legacyDeleteSegmentCall(tenantId, segId, progressListener, progressRequestListener);
+        return call;
+
+
+
+
+
+    }
+
+    /**
+     * 删除分群
+     * 
+     * @param tenantId  (required)
+     * @param segId  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void legacyDeleteSegment(Integer tenantId, Integer segId) throws ApiException {
+        legacyDeleteSegmentWithHttpInfo(tenantId, segId);
+    }
+
+    /**
+     * 删除分群
+     * 
+     * @param tenantId  (required)
+     * @param segId  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> legacyDeleteSegmentWithHttpInfo(Integer tenantId, Integer segId) throws ApiException {
+        com.squareup.okhttp.Call call = legacyDeleteSegmentValidateBeforeCall(tenantId, segId, null, null);
+        return apiClient.execute(call);
+    }
+
+    /**
+     * 删除分群 (asynchronously)
+     * 
+     * @param tenantId  (required)
+     * @param segId  (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call legacyDeleteSegmentAsync(Integer tenantId, Integer segId, final ApiCallback<Void> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        String[] localVarAccepts = {
+            
+        };
+
+        com.squareup.okhttp.Call call = legacyDeleteSegmentValidateBeforeCall(tenantId, segId, progressListener, progressRequestListener);
+        apiClient.executeAsync(call, callback);
         return call;
     }
     /**
@@ -737,6 +1169,294 @@ public class SegmentationApi {
         return call;
     }
     /**
+     * Build call for legacyModifyManualSegment
+     * @param tenantId  (required)
+     * @param segId  (required)
+     * @param body  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call legacyModifyManualSegmentCall(Integer tenantId, Integer segId, LegacyManualSegCreateRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        localVarQueryParams.add(new Pair("tenantId", tenantId.toString()));
+        localVarQueryParams.add(new Pair("segId", segId.toString()));
+
+        localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
+        localVarQueryParams.add(new Pair("Version","2021-12-16"));
+        localVarQueryParams.add(new Pair("ApiAction","legacyModifyManualSegment"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-08-08"));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "*/*"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call legacyModifyManualSegmentValidateBeforeCall(Integer tenantId, Integer segId, LegacyManualSegCreateRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'tenantId' is set
+        if (tenantId == null) {
+            throw new ApiException("Missing the required parameter 'tenantId' when calling legacyModifyManualSegment(Async)");
+        }
+        // verify the required parameter 'segId' is set
+        if (segId == null) {
+            throw new ApiException("Missing the required parameter 'segId' when calling legacyModifyManualSegment(Async)");
+        }
+
+        com.squareup.okhttp.Call call = legacyModifyManualSegmentCall(tenantId, segId, body, progressListener, progressRequestListener);
+        return call;
+
+
+
+
+
+    }
+
+    /**
+     * 修改人工分群
+     * 
+     * @param tenantId  (required)
+     * @param segId  (required)
+     * @param body  (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void legacyModifyManualSegment(Integer tenantId, Integer segId, LegacyManualSegCreateRequest body) throws ApiException {
+        legacyModifyManualSegmentWithHttpInfo(tenantId, segId, body);
+    }
+
+    /**
+     * 修改人工分群
+     * 
+     * @param tenantId  (required)
+     * @param segId  (required)
+     * @param body  (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> legacyModifyManualSegmentWithHttpInfo(Integer tenantId, Integer segId, LegacyManualSegCreateRequest body) throws ApiException {
+        com.squareup.okhttp.Call call = legacyModifyManualSegmentValidateBeforeCall(tenantId, segId, body, null, null);
+        return apiClient.execute(call);
+    }
+
+    /**
+     * 修改人工分群 (asynchronously)
+     * 
+     * @param tenantId  (required)
+     * @param segId  (required)
+     * @param body  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call legacyModifyManualSegmentAsync(Integer tenantId, Integer segId, LegacyManualSegCreateRequest body, final ApiCallback<Void> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        String[] localVarAccepts = {
+            
+        };
+
+        com.squareup.okhttp.Call call = legacyModifyManualSegmentValidateBeforeCall(tenantId, segId, body, progressListener, progressRequestListener);
+        apiClient.executeAsync(call, callback);
+        return call;
+    }
+    /**
+     * Build call for modifyConditionalSegment
+     * @param tenantId  (required)
+     * @param segId  (required)
+     * @param body  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call modifyConditionalSegmentCall(Integer tenantId, Integer segId, SimplifiedSegCreateOrUpdateRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        localVarQueryParams.add(new Pair("tenantId", tenantId.toString()));
+        localVarQueryParams.add(new Pair("segId", segId.toString()));
+
+        localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
+        localVarQueryParams.add(new Pair("Version","2021-12-16"));
+        localVarQueryParams.add(new Pair("ApiAction","modifyConditionalSegment"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-08-08"));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "*/*"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call modifyConditionalSegmentValidateBeforeCall(Integer tenantId, Integer segId, SimplifiedSegCreateOrUpdateRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'tenantId' is set
+        if (tenantId == null) {
+            throw new ApiException("Missing the required parameter 'tenantId' when calling modifyConditionalSegment(Async)");
+        }
+        // verify the required parameter 'segId' is set
+        if (segId == null) {
+            throw new ApiException("Missing the required parameter 'segId' when calling modifyConditionalSegment(Async)");
+        }
+
+        com.squareup.okhttp.Call call = modifyConditionalSegmentCall(tenantId, segId, body, progressListener, progressRequestListener);
+        return call;
+
+
+
+
+
+    }
+
+    /**
+     * 修改离线规则-简化
+     * 
+     * @param tenantId  (required)
+     * @param segId  (required)
+     * @param body  (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void modifyConditionalSegment(Integer tenantId, Integer segId, SimplifiedSegCreateOrUpdateRequest body) throws ApiException {
+        modifyConditionalSegmentWithHttpInfo(tenantId, segId, body);
+    }
+
+    /**
+     * 修改离线规则-简化
+     * 
+     * @param tenantId  (required)
+     * @param segId  (required)
+     * @param body  (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> modifyConditionalSegmentWithHttpInfo(Integer tenantId, Integer segId, SimplifiedSegCreateOrUpdateRequest body) throws ApiException {
+        com.squareup.okhttp.Call call = modifyConditionalSegmentValidateBeforeCall(tenantId, segId, body, null, null);
+        return apiClient.execute(call);
+    }
+
+    /**
+     * 修改离线规则-简化 (asynchronously)
+     * 
+     * @param tenantId  (required)
+     * @param segId  (required)
+     * @param body  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call modifyConditionalSegmentAsync(Integer tenantId, Integer segId, SimplifiedSegCreateOrUpdateRequest body, final ApiCallback<Void> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        String[] localVarAccepts = {
+            
+        };
+
+        com.squareup.okhttp.Call call = modifyConditionalSegmentValidateBeforeCall(tenantId, segId, body, progressListener, progressRequestListener);
+        apiClient.executeAsync(call, callback);
+        return call;
+    }
+    /**
      * Build call for segmentOnlineServiceEnable
      * @param body  (required)
      * @param tenantId  (required)
@@ -1040,6 +1760,156 @@ public class SegmentationApi {
 
         com.squareup.okhttp.Call call = uploadSegFileValidateBeforeCall(file, tenantId, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ByteDanceResponseSegmentationUploadResp>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, localVarAccepts, callback);
+        return call;
+    }
+    /**
+     * Build call for uploadSegFileToCh
+     * @param file  (required)
+     * @param tenantId  (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call uploadSegFileToChCall(File file, Integer tenantId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        localVarQueryParams.add(new Pair("tenantId", tenantId.toString()));
+
+        localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
+        localVarQueryParams.add(new Pair("Version","2021-12-16"));
+        localVarQueryParams.add(new Pair("ApiAction","uploadSegFileToCh"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-08-08"));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        if (file != null)
+        localVarFormParams.put("file", file);
+
+        final String[] localVarAccepts = {
+            "*/*"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "multipart/form-data"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call uploadSegFileToChValidateBeforeCall(File file, Integer tenantId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'file' is set
+        if (file == null) {
+            throw new ApiException("Missing the required parameter 'file' when calling uploadSegFileToCh(Async)");
+        }
+        // verify the required parameter 'tenantId' is set
+        if (tenantId == null) {
+            throw new ApiException("Missing the required parameter 'tenantId' when calling uploadSegFileToCh(Async)");
+        }
+
+        com.squareup.okhttp.Call call = uploadSegFileToChCall(file, tenantId, progressListener, progressRequestListener);
+        return call;
+
+
+
+
+
+    }
+
+    /**
+     * 上传人工分群文件
+     * 
+     * @param file  (required)
+     * @param tenantId  (required)
+     * @return SegOpenApiFileUploadResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public SegOpenApiFileUploadResponse uploadSegFileToCh(File file, Integer tenantId) throws ApiException {
+        ApiResponse<SegOpenApiFileUploadResponse> resp = uploadSegFileToChWithHttpInfo(file, tenantId);
+        return resp.getData();
+    }
+
+    /**
+     * 上传人工分群文件
+     * 
+     * @param file  (required)
+     * @param tenantId  (required)
+     * @return ApiResponse&lt;SegOpenApiFileUploadResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SegOpenApiFileUploadResponse> uploadSegFileToChWithHttpInfo(File file, Integer tenantId) throws ApiException {
+        com.squareup.okhttp.Call call = uploadSegFileToChValidateBeforeCall(file, tenantId, null, null);
+        Type localVarReturnType = new TypeToken<SegOpenApiFileUploadResponse>(){}.getType();
+
+        String[] localVarAccepts = {
+            "*/*"
+        };
+
+        return apiClient.execute(call, localVarReturnType, localVarAccepts);
+    }
+
+    /**
+     * 上传人工分群文件 (asynchronously)
+     * 
+     * @param file  (required)
+     * @param tenantId  (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call uploadSegFileToChAsync(File file, Integer tenantId, final ApiCallback<SegOpenApiFileUploadResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        String[] localVarAccepts = {
+            "*/*"
+        };
+
+        com.squareup.okhttp.Call call = uploadSegFileToChValidateBeforeCall(file, tenantId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SegOpenApiFileUploadResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, localVarAccepts, callback);
         return call;
     }

@@ -33,7 +33,11 @@ import code.byted.cdp.model.ByteDanceResponseSegmentationOnlineServiceEnableResp
 import code.byted.cdp.model.ByteDanceResponseSegmentationResp;
 import code.byted.cdp.model.ByteDanceResponseSegmentationUploadResp;
 import java.io.File;
+import code.byted.cdp.model.LegacyManualSegCreateRequest;
+import code.byted.cdp.model.LegacySegOpenApiInfoResponse;
 import code.byted.cdp.model.LegacyUploadedSegCreateRequest;
+import code.byted.cdp.model.SegOpenApiFileUploadResponse;
+import code.byted.cdp.model.SimplifiedSegCreateOrUpdateRequest;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -53,6 +57,22 @@ public class SegmentationApiTest {
     private final SegmentationApi api = new SegmentationApi();
 
     /**
+     * 创建离线规则-简化
+     *
+     * 
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void createConditionalSegmentTest() throws Exception {
+        Integer tenantId = null;
+        SimplifiedSegCreateOrUpdateRequest body = null;
+        LegacySegOpenApiInfoResponse response = api.createConditionalSegment(tenantId, body);
+
+        // TODO: test validations
+    }
+    /**
      * 分群ID文件下载
      *
      * 
@@ -71,6 +91,22 @@ public class SegmentationApiTest {
         // TODO: test validations
     }
     /**
+     * 创建人工分群
+     *
+     * 
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void legacyCreateManualSegmentTest() throws Exception {
+        Integer tenantId = null;
+        LegacyManualSegCreateRequest body = null;
+        LegacySegOpenApiInfoResponse response = api.legacyCreateManualSegment(tenantId, body);
+
+        // TODO: test validations
+    }
+    /**
      * 创建上传分群
      *
      * 
@@ -83,6 +119,22 @@ public class SegmentationApiTest {
         LegacyUploadedSegCreateRequest body = null;
         Integer tenantId = null;
         ByteDanceResponseRecordSegShardInfoResp response = api.legacyCreateUploadSegment(body, tenantId);
+
+        // TODO: test validations
+    }
+    /**
+     * 删除分群
+     *
+     * 
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void legacyDeleteSegmentTest() throws Exception {
+        Integer tenantId = null;
+        Integer segId = null;
+        api.legacyDeleteSegment(tenantId, segId);
 
         // TODO: test validations
     }
@@ -128,6 +180,40 @@ public class SegmentationApiTest {
         // TODO: test validations
     }
     /**
+     * 修改人工分群
+     *
+     * 
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void legacyModifyManualSegmentTest() throws Exception {
+        Integer tenantId = null;
+        Integer segId = null;
+        LegacyManualSegCreateRequest body = null;
+        api.legacyModifyManualSegment(tenantId, segId, body);
+
+        // TODO: test validations
+    }
+    /**
+     * 修改离线规则-简化
+     *
+     * 
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void modifyConditionalSegmentTest() throws Exception {
+        Integer tenantId = null;
+        Integer segId = null;
+        SimplifiedSegCreateOrUpdateRequest body = null;
+        api.modifyConditionalSegment(tenantId, segId, body);
+
+        // TODO: test validations
+    }
+    /**
      * 分群在线服务开启/关闭
      *
      * 开启/关闭单个分群的在线服务
@@ -157,6 +243,22 @@ public class SegmentationApiTest {
         File file = null;
         Integer tenantId = null;
         ByteDanceResponseSegmentationUploadResp response = api.uploadSegFile(file, tenantId);
+
+        // TODO: test validations
+    }
+    /**
+     * 上传人工分群文件
+     *
+     * 
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void uploadSegFileToChTest() throws Exception {
+        File file = null;
+        Integer tenantId = null;
+        SegOpenApiFileUploadResponse response = api.uploadSegFileToCh(file, tenantId);
 
         // TODO: test validations
     }

@@ -35,11 +35,12 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import org.threeten.bp.OffsetDateTime;
 /**
  * LegacySegResult
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-11T11:20:29.425+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-20T16:39:48.664+08:00[Asia/Shanghai]")
 public class LegacySegResult {
   @SerializedName("count")
   private Long count = null;
@@ -51,10 +52,10 @@ public class LegacySegResult {
   private String targetPath = null;
 
   @SerializedName("exportAt")
-  private String exportAt = null;
+  private OffsetDateTime exportAt = null;
 
   /**
-   * Gets or Sets segStatus
+   * 分群最新文件导出时间
    */
   @JsonAdapter(SegStatusEnum.Adapter.class)
   public enum SegStatusEnum {
@@ -104,10 +105,10 @@ public class LegacySegResult {
   }
 
    /**
-   * Get count
+   * 分群数量
    * @return count
   **/
-  @Schema(description = "")
+  @Schema(description = "分群数量")
   public Long getCount() {
     return count;
   }
@@ -122,10 +123,10 @@ public class LegacySegResult {
   }
 
    /**
-   * Get path
+   * 分群离线文件地址
    * @return path
   **/
-  @Schema(description = "")
+  @Schema(description = "分群离线文件地址")
   public String getPath() {
     return path;
   }
@@ -140,10 +141,10 @@ public class LegacySegResult {
   }
 
    /**
-   * Get targetPath
+   * 分群离线文件地址，同path
    * @return targetPath
   **/
-  @Schema(description = "")
+  @Schema(description = "分群离线文件地址，同path")
   public String getTargetPath() {
     return targetPath;
   }
@@ -152,21 +153,21 @@ public class LegacySegResult {
     this.targetPath = targetPath;
   }
 
-  public LegacySegResult exportAt(String exportAt) {
+  public LegacySegResult exportAt(OffsetDateTime exportAt) {
     this.exportAt = exportAt;
     return this;
   }
 
    /**
-   * Get exportAt
+   * 分群最新文件导出时间
    * @return exportAt
   **/
-  @Schema(description = "")
-  public String getExportAt() {
+  @Schema(description = "分群最新文件导出时间")
+  public OffsetDateTime getExportAt() {
     return exportAt;
   }
 
-  public void setExportAt(String exportAt) {
+  public void setExportAt(OffsetDateTime exportAt) {
     this.exportAt = exportAt;
   }
 
@@ -176,10 +177,10 @@ public class LegacySegResult {
   }
 
    /**
-   * Get segStatus
+   * 分群最新文件导出时间
    * @return segStatus
   **/
-  @Schema(description = "")
+  @Schema(description = "分群最新文件导出时间")
   public SegStatusEnum getSegStatus() {
     return segStatus;
   }

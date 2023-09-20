@@ -26,10 +26,9 @@
 
 package code.byted.cdp.openapi;
 
-import code.byted.cdp.model.ByteDanceCirceResponseString;
-import code.byted.cdp.model.OpenApiDataAssetTaskReq;
-import code.byted.cdp.model.OpenApiPreviewTableReq;
-import code.byted.cdp.model.TableSchemaPreviewResp;
+import code.byted.cdp.model.DslCheckResp;
+import code.byted.cdp.model.DslReq;
+import code.byted.cdp.model.PreviewResp;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -41,15 +40,15 @@ import java.util.Map;
 
 
 /**
- * API tests for DataAssetApi
+ * API tests for SelectionComponentApi
  */
 @Ignore
-public class DataAssetApiTest {
+public class SelectionComponentApiTest {
 
-    private final DataAssetApi api = new DataAssetApi();
+    private final SelectionComponentApi api = new SelectionComponentApi();
 
     /**
-     * 
+     * 校验dsl是否合法
      *
      * 
      *
@@ -57,15 +56,15 @@ public class DataAssetApiTest {
      *          if the Api call fails
      */
     @Test
-    public void assetTablePreviewTest() throws Exception {
-        OpenApiPreviewTableReq body = null;
-        String xTenant = null;
-        TableSchemaPreviewResp response = api.assetTablePreview(body, xTenant);
+    public void dslCheckTest() throws Exception {
+        DslReq body = null;
+        String tenantCode = null;
+        DslCheckResp response = api.dslCheck(body, tenantCode);
 
         // TODO: test validations
     }
     /**
-     * 
+     * 预估圈人数量
      *
      * 
      *
@@ -73,10 +72,10 @@ public class DataAssetApiTest {
      *          if the Api call fails
      */
     @Test
-    public void assetTaskCreateTest() throws Exception {
-        OpenApiDataAssetTaskReq body = null;
-        String xTenant = null;
-        ByteDanceCirceResponseString response = api.assetTaskCreate(body, xTenant);
+    public void previewDSLTest() throws Exception {
+        DslReq body = null;
+        String tenantCode = null;
+        PreviewResp response = api.previewDSL(body, tenantCode);
 
         // TODO: test validations
     }

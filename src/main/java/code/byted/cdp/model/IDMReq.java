@@ -39,7 +39,7 @@ import java.io.IOException;
  * IDMReq
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-11T11:20:29.425+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-20T16:39:48.664+08:00[Asia/Shanghai]")
 public class IDMReq {
   @SerializedName("id")
   private String id = null;
@@ -49,6 +49,9 @@ public class IDMReq {
 
   @SerializedName("target_entity_name")
   private String targetEntityName = null;
+
+  @SerializedName("interentity_strategy_id")
+  private Integer interentityStrategyId = null;
 
   public IDMReq id(String id) {
     this.id = id;
@@ -104,6 +107,24 @@ public class IDMReq {
     this.targetEntityName = targetEntityName;
   }
 
+  public IDMReq interentityStrategyId(Integer interentityStrategyId) {
+    this.interentityStrategyId = interentityStrategyId;
+    return this;
+  }
+
+   /**
+   * 跨主体转换策略id
+   * @return interentityStrategyId
+  **/
+  @Schema(description = "跨主体转换策略id")
+  public Integer getInterentityStrategyId() {
+    return interentityStrategyId;
+  }
+
+  public void setInterentityStrategyId(Integer interentityStrategyId) {
+    this.interentityStrategyId = interentityStrategyId;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -116,12 +137,13 @@ public class IDMReq {
     IDMReq idMReq = (IDMReq) o;
     return Objects.equals(this.id, idMReq.id) &&
         Objects.equals(this.sourceEntityName, idMReq.sourceEntityName) &&
-        Objects.equals(this.targetEntityName, idMReq.targetEntityName);
+        Objects.equals(this.targetEntityName, idMReq.targetEntityName) &&
+        Objects.equals(this.interentityStrategyId, idMReq.interentityStrategyId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, sourceEntityName, targetEntityName);
+    return Objects.hash(id, sourceEntityName, targetEntityName, interentityStrategyId);
   }
 
 
@@ -133,6 +155,7 @@ public class IDMReq {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    sourceEntityName: ").append(toIndentedString(sourceEntityName)).append("\n");
     sb.append("    targetEntityName: ").append(toIndentedString(targetEntityName)).append("\n");
+    sb.append("    interentityStrategyId: ").append(toIndentedString(interentityStrategyId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -28,8 +28,9 @@ package code.byted.cdp.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import code.byted.cdp.model.DetailModel;
+import code.byted.cdp.model.LegacySegGroupInfo;
 import code.byted.cdp.model.LegacySegResult;
+import code.byted.cdp.model.SegmentExtraCondition;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -37,11 +38,13 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 /**
  * LegacySegOpenApiInfoResponse
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-11T11:20:29.425+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-20T16:39:48.664+08:00[Asia/Shanghai]")
 public class LegacySegOpenApiInfoResponse {
   @SerializedName("id")
   private Integer id = null;
@@ -88,7 +91,8 @@ public class LegacySegOpenApiInfoResponse {
     PRIVATECLUSTER("PrivateCluster"),
     PRIVATECLUSTERCHILD("PrivateClusterChild"),
     PUBLICCLUSTER("PublicCluster"),
-    PUBLICCLUSTERCHILD("PublicClusterChild");
+    PUBLICCLUSTERCHILD("PublicClusterChild"),
+    MANUALREALTIME("ManualRealtime");
 
     private String value;
 
@@ -130,7 +134,10 @@ public class LegacySegOpenApiInfoResponse {
   private Boolean abaseEnabled = null;
 
   @SerializedName("detail")
-  private DetailModel detail = null;
+  private SegmentExtraCondition detail = null;
+
+  @SerializedName("groupInf")
+  private List<LegacySegGroupInfo> groupInf = null;
 
   public LegacySegOpenApiInfoResponse id(Integer id) {
     this.id = id;
@@ -276,7 +283,7 @@ public class LegacySegOpenApiInfoResponse {
     this.abaseEnabled = abaseEnabled;
   }
 
-  public LegacySegOpenApiInfoResponse detail(DetailModel detail) {
+  public LegacySegOpenApiInfoResponse detail(SegmentExtraCondition detail) {
     this.detail = detail;
     return this;
   }
@@ -286,12 +293,38 @@ public class LegacySegOpenApiInfoResponse {
    * @return detail
   **/
   @Schema(description = "")
-  public DetailModel getDetail() {
+  public SegmentExtraCondition getDetail() {
     return detail;
   }
 
-  public void setDetail(DetailModel detail) {
+  public void setDetail(SegmentExtraCondition detail) {
     this.detail = detail;
+  }
+
+  public LegacySegOpenApiInfoResponse groupInf(List<LegacySegGroupInfo> groupInf) {
+    this.groupInf = groupInf;
+    return this;
+  }
+
+  public LegacySegOpenApiInfoResponse addGroupInfItem(LegacySegGroupInfo groupInfItem) {
+    if (this.groupInf == null) {
+      this.groupInf = new ArrayList<LegacySegGroupInfo>();
+    }
+    this.groupInf.add(groupInfItem);
+    return this;
+  }
+
+   /**
+   * 分群分组详情
+   * @return groupInf
+  **/
+  @Schema(description = "分群分组详情")
+  public List<LegacySegGroupInfo> getGroupInf() {
+    return groupInf;
+  }
+
+  public void setGroupInf(List<LegacySegGroupInfo> groupInf) {
+    this.groupInf = groupInf;
   }
 
 
@@ -312,12 +345,13 @@ public class LegacySegOpenApiInfoResponse {
         Objects.equals(this.result, legacySegOpenApiInfoResponse.result) &&
         Objects.equals(this.segType, legacySegOpenApiInfoResponse.segType) &&
         Objects.equals(this.abaseEnabled, legacySegOpenApiInfoResponse.abaseEnabled) &&
-        Objects.equals(this.detail, legacySegOpenApiInfoResponse.detail);
+        Objects.equals(this.detail, legacySegOpenApiInfoResponse.detail) &&
+        Objects.equals(this.groupInf, legacySegOpenApiInfoResponse.groupInf);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, createdBy, idType, idTypeName, result, segType, abaseEnabled, detail);
+    return Objects.hash(id, name, createdBy, idType, idTypeName, result, segType, abaseEnabled, detail, groupInf);
   }
 
 
@@ -335,6 +369,7 @@ public class LegacySegOpenApiInfoResponse {
     sb.append("    segType: ").append(toIndentedString(segType)).append("\n");
     sb.append("    abaseEnabled: ").append(toIndentedString(abaseEnabled)).append("\n");
     sb.append("    detail: ").append(toIndentedString(detail)).append("\n");
+    sb.append("    groupInf: ").append(toIndentedString(groupInf)).append("\n");
     sb.append("}");
     return sb.toString();
   }

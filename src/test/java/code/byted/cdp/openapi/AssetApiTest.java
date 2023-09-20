@@ -26,10 +26,12 @@
 
 package code.byted.cdp.openapi;
 
-import code.byted.cdp.model.ByteDanceCirceResponseString;
-import code.byted.cdp.model.OpenApiDataAssetTaskReq;
-import code.byted.cdp.model.OpenApiPreviewTableReq;
-import code.byted.cdp.model.TableSchemaPreviewResp;
+import code.byted.cdp.model.AccessCoreStatisticsReq;
+import code.byted.cdp.model.CommonResponseDetailTableResp;
+import code.byted.cdp.model.CommonResponseListAccessCoreStatisticsResp;
+import code.byted.cdp.model.CommonResponseListTendencyStatisticsResp;
+import code.byted.cdp.model.DetailTableReq;
+import code.byted.cdp.model.TendencyStatisticsReq;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -41,15 +43,15 @@ import java.util.Map;
 
 
 /**
- * API tests for DataAssetApi
+ * API tests for AssetApi
  */
 @Ignore
-public class DataAssetApiTest {
+public class AssetApiTest {
 
-    private final DataAssetApi api = new DataAssetApi();
+    private final AssetApi api = new AssetApi();
 
     /**
-     * 
+     * 获取访问统计-核心指标
      *
      * 
      *
@@ -57,15 +59,14 @@ public class DataAssetApiTest {
      *          if the Api call fails
      */
     @Test
-    public void assetTablePreviewTest() throws Exception {
-        OpenApiPreviewTableReq body = null;
-        String xTenant = null;
-        TableSchemaPreviewResp response = api.assetTablePreview(body, xTenant);
+    public void getAccessCoreStatisticsTest() throws Exception {
+        AccessCoreStatisticsReq body = null;
+        CommonResponseListAccessCoreStatisticsResp response = api.getAccessCoreStatistics(body);
 
         // TODO: test validations
     }
     /**
-     * 
+     * 获取资产报表
      *
      * 
      *
@@ -73,10 +74,24 @@ public class DataAssetApiTest {
      *          if the Api call fails
      */
     @Test
-    public void assetTaskCreateTest() throws Exception {
-        OpenApiDataAssetTaskReq body = null;
-        String xTenant = null;
-        ByteDanceCirceResponseString response = api.assetTaskCreate(body, xTenant);
+    public void getResourceTableTest() throws Exception {
+        DetailTableReq body = null;
+        CommonResponseDetailTableResp response = api.getResourceTable(body);
+
+        // TODO: test validations
+    }
+    /**
+     * 获取访问统计-核心指标趋势图
+     *
+     * 
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void getTendencyStatisticsTest() throws Exception {
+        TendencyStatisticsReq body = null;
+        CommonResponseListTendencyStatisticsResp response = api.getTendencyStatistics(body);
 
         // TODO: test validations
     }
