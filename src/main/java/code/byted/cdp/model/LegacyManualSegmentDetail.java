@@ -39,7 +39,7 @@ import java.io.IOException;
  * LegacyManualSegmentDetail
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-20T16:39:48.664+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-28T16:25:17.153+08:00[Asia/Shanghai]")
 public class LegacyManualSegmentDetail {
   @SerializedName("uploadTaskId")
   private Integer uploadTaskId = null;
@@ -52,6 +52,7 @@ public class LegacyManualSegmentDetail {
    */
   @JsonAdapter(UpdateModeEnum.Adapter.class)
   public enum UpdateModeEnum {
+    UNKNOWN("Unknown"),
     ADD("ADD"),
     REMOVE("REMOVE"),
     OVERWRITE("OVERWRITE");
@@ -75,7 +76,7 @@ public class LegacyManualSegmentDetail {
           return b;
         }
       }
-      return null;
+      return UNKNOWN;
     }
     public static class Adapter extends TypeAdapter<UpdateModeEnum> {
       @Override

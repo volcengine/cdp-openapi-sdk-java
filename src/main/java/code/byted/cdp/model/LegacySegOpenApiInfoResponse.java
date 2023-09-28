@@ -28,9 +28,9 @@ package code.byted.cdp.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import code.byted.cdp.model.DetailModel;
 import code.byted.cdp.model.LegacySegGroupInfo;
 import code.byted.cdp.model.LegacySegResult;
-import code.byted.cdp.model.SegmentExtraCondition;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -44,7 +44,7 @@ import java.util.List;
  * LegacySegOpenApiInfoResponse
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-20T16:39:48.664+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-28T16:25:17.153+08:00[Asia/Shanghai]")
 public class LegacySegOpenApiInfoResponse {
   @SerializedName("id")
   private Integer id = null;
@@ -69,6 +69,7 @@ public class LegacySegOpenApiInfoResponse {
    */
   @JsonAdapter(SegTypeEnum.Adapter.class)
   public enum SegTypeEnum {
+    UNKNOWN("Unknown"),
     CONDITIONAL("Conditional"),
     UPLOADED("Uploaded"),
     ABI("ABI"),
@@ -113,7 +114,7 @@ public class LegacySegOpenApiInfoResponse {
           return b;
         }
       }
-      return null;
+      return UNKNOWN;
     }
     public static class Adapter extends TypeAdapter<SegTypeEnum> {
       @Override
@@ -134,7 +135,7 @@ public class LegacySegOpenApiInfoResponse {
   private Boolean abaseEnabled = null;
 
   @SerializedName("detail")
-  private SegmentExtraCondition detail = null;
+  private DetailModel detail = null;
 
   @SerializedName("groupInf")
   private List<LegacySegGroupInfo> groupInf = null;
@@ -283,7 +284,7 @@ public class LegacySegOpenApiInfoResponse {
     this.abaseEnabled = abaseEnabled;
   }
 
-  public LegacySegOpenApiInfoResponse detail(SegmentExtraCondition detail) {
+  public LegacySegOpenApiInfoResponse detail(DetailModel detail) {
     this.detail = detail;
     return this;
   }
@@ -293,11 +294,11 @@ public class LegacySegOpenApiInfoResponse {
    * @return detail
   **/
   @Schema(description = "")
-  public SegmentExtraCondition getDetail() {
+  public DetailModel getDetail() {
     return detail;
   }
 
-  public void setDetail(SegmentExtraCondition detail) {
+  public void setDetail(DetailModel detail) {
     this.detail = detail;
   }
 

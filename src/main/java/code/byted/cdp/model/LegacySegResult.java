@@ -35,12 +35,11 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
-import org.threeten.bp.OffsetDateTime;
 /**
  * LegacySegResult
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-20T16:39:48.664+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-28T16:25:17.153+08:00[Asia/Shanghai]")
 public class LegacySegResult {
   @SerializedName("count")
   private Long count = null;
@@ -52,13 +51,14 @@ public class LegacySegResult {
   private String targetPath = null;
 
   @SerializedName("exportAt")
-  private OffsetDateTime exportAt = null;
+  private String exportAt = null;
 
   /**
-   * 分群最新文件导出时间
+   * 分群状态
    */
   @JsonAdapter(SegStatusEnum.Adapter.class)
   public enum SegStatusEnum {
+    UNKNOWN("Unknown"),
     EXPORTING("Exporting"),
     INVALID("Invalid"),
     NORMAL("Normal");
@@ -82,7 +82,7 @@ public class LegacySegResult {
           return b;
         }
       }
-      return null;
+      return UNKNOWN;
     }
     public static class Adapter extends TypeAdapter<SegStatusEnum> {
       @Override
@@ -153,7 +153,7 @@ public class LegacySegResult {
     this.targetPath = targetPath;
   }
 
-  public LegacySegResult exportAt(OffsetDateTime exportAt) {
+  public LegacySegResult exportAt(String exportAt) {
     this.exportAt = exportAt;
     return this;
   }
@@ -163,11 +163,11 @@ public class LegacySegResult {
    * @return exportAt
   **/
   @Schema(description = "分群最新文件导出时间")
-  public OffsetDateTime getExportAt() {
+  public String getExportAt() {
     return exportAt;
   }
 
-  public void setExportAt(OffsetDateTime exportAt) {
+  public void setExportAt(String exportAt) {
     this.exportAt = exportAt;
   }
 
@@ -177,10 +177,10 @@ public class LegacySegResult {
   }
 
    /**
-   * 分群最新文件导出时间
+   * 分群状态
    * @return segStatus
   **/
-  @Schema(description = "分群最新文件导出时间")
+  @Schema(description = "分群状态")
   public SegStatusEnum getSegStatus() {
     return segStatus;
   }
