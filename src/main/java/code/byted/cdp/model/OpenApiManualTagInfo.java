@@ -39,7 +39,7 @@ import java.io.IOException;
  * OpenApiManualTagInfo
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-11T11:20:29.425+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-28T16:25:17.153+08:00[Asia/Shanghai]")
 public class OpenApiManualTagInfo {
   @SerializedName("createdAt")
   private Long createdAt = null;
@@ -49,6 +49,7 @@ public class OpenApiManualTagInfo {
    */
   @JsonAdapter(DataTypeEnum.Adapter.class)
   public enum DataTypeEnum {
+    UNKNOWN("Unknown"),
     SIMPLETAG("SimpleTag"),
     COMPLEXTAG("ComplexTag"),
     APPTAG("AppTag"),
@@ -76,7 +77,7 @@ public class OpenApiManualTagInfo {
           return b;
         }
       }
-      return null;
+      return UNKNOWN;
     }
     public static class Adapter extends TypeAdapter<DataTypeEnum> {
       @Override

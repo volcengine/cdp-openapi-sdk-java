@@ -40,6 +40,7 @@ import com.google.gson.stream.JsonWriter;
  */
 @JsonAdapter(AssetType.Adapter.class)
 public enum AssetType {
+  UNKNOWN("Unknown"),
   TAG("TAG"),
   TAGV2("TAGV2"),
   PROPERTY("PROPERTY"),
@@ -70,7 +71,7 @@ public enum AssetType {
         return b;
       }
     }
-    return null;
+    return UNKNOWN;
   }
 
   public static class Adapter extends TypeAdapter<AssetType> {

@@ -40,7 +40,7 @@ import java.io.IOException;
  * SimplifiedSegCreateOrUpdateRequest
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-20T16:39:48.664+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-28T16:25:17.153+08:00[Asia/Shanghai]")
 public class SimplifiedSegCreateOrUpdateRequest {
   @SerializedName("name")
   private String name = null;
@@ -59,6 +59,7 @@ public class SimplifiedSegCreateOrUpdateRequest {
    */
   @JsonAdapter(ScheduleTypeEnum.Adapter.class)
   public enum ScheduleTypeEnum {
+    UNKNOWN("Unknown"),
     ONCE("Once"),
     DAILY("Daily"),
     TRIGGER("Trigger"),
@@ -83,7 +84,7 @@ public class SimplifiedSegCreateOrUpdateRequest {
           return b;
         }
       }
-      return null;
+      return UNKNOWN;
     }
     public static class Adapter extends TypeAdapter<ScheduleTypeEnum> {
       @Override

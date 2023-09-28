@@ -39,7 +39,7 @@ import java.io.IOException;
  * SegDependency
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-11T11:20:29.425+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-28T16:25:17.153+08:00[Asia/Shanghai]")
 public class SegDependency {
   @SerializedName("id")
   private Integer id = null;
@@ -55,6 +55,7 @@ public class SegDependency {
    */
   @JsonAdapter(RelatedSegStatusEnum.Adapter.class)
   public enum RelatedSegStatusEnum {
+    UNKNOWN("Unknown"),
     EXPORTING("Exporting"),
     INVALID("Invalid"),
     NORMAL("Normal"),
@@ -81,7 +82,7 @@ public class SegDependency {
           return b;
         }
       }
-      return null;
+      return UNKNOWN;
     }
     public static class Adapter extends TypeAdapter<RelatedSegStatusEnum> {
       @Override

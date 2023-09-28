@@ -42,7 +42,7 @@ import java.util.List;
  * IdType
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-11T11:20:29.425+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-28T16:25:17.153+08:00[Asia/Shanghai]")
 public class IdType {
   @SerializedName("availableMappingIds")
   private List<IdTypeMapping> availableMappingIds = null;
@@ -58,6 +58,7 @@ public class IdType {
    */
   @JsonAdapter(EntityTypeEnum.Adapter.class)
   public enum EntityTypeEnum {
+    UNKNOWN("Unknown"),
     BASEID("BaseId"),
     PHONE("Phone"),
     PHONE_SHA256("Phone_SHA256"),
@@ -92,7 +93,7 @@ public class IdType {
           return b;
         }
       }
-      return null;
+      return UNKNOWN;
     }
     public static class Adapter extends TypeAdapter<EntityTypeEnum> {
       @Override

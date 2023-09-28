@@ -40,7 +40,7 @@ import org.threeten.bp.LocalDate;
  * LegacySegOpenApiResponse
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-11T11:20:29.425+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-28T16:25:17.153+08:00[Asia/Shanghai]")
 public class LegacySegOpenApiResponse {
   @SerializedName("id")
   private Integer id = null;
@@ -74,6 +74,7 @@ public class LegacySegOpenApiResponse {
    */
   @JsonAdapter(ExportStrategyEnum.Adapter.class)
   public enum ExportStrategyEnum {
+    UNKNOWN("Unknown"),
     ONCE("Once"),
     DAILY("Daily"),
     TRIGGER("Trigger"),
@@ -98,7 +99,7 @@ public class LegacySegOpenApiResponse {
           return b;
         }
       }
-      return null;
+      return UNKNOWN;
     }
     public static class Adapter extends TypeAdapter<ExportStrategyEnum> {
       @Override
@@ -120,6 +121,7 @@ public class LegacySegOpenApiResponse {
    */
   @JsonAdapter(SegStatusEnum.Adapter.class)
   public enum SegStatusEnum {
+    UNKNOWN("Unknown"),
     EXPORTING("Exporting"),
     INVALID("Invalid"),
     NORMAL("Normal");
@@ -143,7 +145,7 @@ public class LegacySegOpenApiResponse {
           return b;
         }
       }
-      return null;
+      return UNKNOWN;
     }
     public static class Adapter extends TypeAdapter<SegStatusEnum> {
       @Override

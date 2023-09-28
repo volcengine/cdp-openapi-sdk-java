@@ -35,18 +35,17 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
-import org.threeten.bp.OffsetDateTime;
 /**
  * 资产报表请求
  */
 @Schema(description = "资产报表请求")
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-20T16:39:48.664+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-28T16:25:17.153+08:00[Asia/Shanghai]")
 public class DetailTableReq {
   @SerializedName("startDate")
-  private OffsetDateTime startDate = null;
+  private String startDate = null;
 
   @SerializedName("endDate")
-  private OffsetDateTime endDate = null;
+  private String endDate = null;
 
   @SerializedName("isCurrentProject")
   private Boolean isCurrentProject = null;
@@ -60,7 +59,7 @@ public class DetailTableReq {
   @SerializedName("pageSize")
   private Integer pageSize = null;
 
-  public DetailTableReq startDate(OffsetDateTime startDate) {
+  public DetailTableReq startDate(String startDate) {
     this.startDate = startDate;
     return this;
   }
@@ -70,15 +69,15 @@ public class DetailTableReq {
    * @return startDate
   **/
   @Schema(description = "开始时间")
-  public OffsetDateTime getStartDate() {
+  public String getStartDate() {
     return startDate;
   }
 
-  public void setStartDate(OffsetDateTime startDate) {
+  public void setStartDate(String startDate) {
     this.startDate = startDate;
   }
 
-  public DetailTableReq endDate(OffsetDateTime endDate) {
+  public DetailTableReq endDate(String endDate) {
     this.endDate = endDate;
     return this;
   }
@@ -88,11 +87,11 @@ public class DetailTableReq {
    * @return endDate
   **/
   @Schema(description = "结束时间")
-  public OffsetDateTime getEndDate() {
+  public String getEndDate() {
     return endDate;
   }
 
-  public void setEndDate(OffsetDateTime endDate) {
+  public void setEndDate(String endDate) {
     this.endDate = endDate;
   }
 

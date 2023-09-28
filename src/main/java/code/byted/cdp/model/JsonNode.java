@@ -39,7 +39,7 @@ import java.io.IOException;
  * JsonNode
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-11T11:20:29.425+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-28T16:25:17.153+08:00[Asia/Shanghai]")
 public class JsonNode {
   @SerializedName("number")
   private Boolean number = null;
@@ -67,6 +67,7 @@ public class JsonNode {
    */
   @JsonAdapter(NodeTypeEnum.Adapter.class)
   public enum NodeTypeEnum {
+    UNKNOWN("Unknown"),
     ARRAY("ARRAY"),
     BINARY("BINARY"),
     BOOLEAN("BOOLEAN"),
@@ -96,7 +97,7 @@ public class JsonNode {
           return b;
         }
       }
-      return null;
+      return UNKNOWN;
     }
     public static class Adapter extends TypeAdapter<NodeTypeEnum> {
       @Override

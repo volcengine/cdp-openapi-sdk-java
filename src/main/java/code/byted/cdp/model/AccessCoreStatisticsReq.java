@@ -37,18 +37,17 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.threeten.bp.OffsetDateTime;
 /**
  * 访问统计-核心指标统计请求
  */
 @Schema(description = "访问统计-核心指标统计请求")
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-20T16:39:48.664+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-28T16:25:17.153+08:00[Asia/Shanghai]")
 public class AccessCoreStatisticsReq {
   @SerializedName("startDate")
-  private OffsetDateTime startDate = null;
+  private String startDate = null;
 
   @SerializedName("endDate")
-  private OffsetDateTime endDate = null;
+  private String endDate = null;
 
   @SerializedName("modules")
   private List<List<String>> modules = null;
@@ -62,7 +61,7 @@ public class AccessCoreStatisticsReq {
   @SerializedName("groupBy")
   private String groupBy = null;
 
-  public AccessCoreStatisticsReq startDate(OffsetDateTime startDate) {
+  public AccessCoreStatisticsReq startDate(String startDate) {
     this.startDate = startDate;
     return this;
   }
@@ -72,15 +71,15 @@ public class AccessCoreStatisticsReq {
    * @return startDate
   **/
   @Schema(description = "业务开始日期")
-  public OffsetDateTime getStartDate() {
+  public String getStartDate() {
     return startDate;
   }
 
-  public void setStartDate(OffsetDateTime startDate) {
+  public void setStartDate(String startDate) {
     this.startDate = startDate;
   }
 
-  public AccessCoreStatisticsReq endDate(OffsetDateTime endDate) {
+  public AccessCoreStatisticsReq endDate(String endDate) {
     this.endDate = endDate;
     return this;
   }
@@ -90,11 +89,11 @@ public class AccessCoreStatisticsReq {
    * @return endDate
   **/
   @Schema(description = "业务结束日期")
-  public OffsetDateTime getEndDate() {
+  public String getEndDate() {
     return endDate;
   }
 
-  public void setEndDate(OffsetDateTime endDate) {
+  public void setEndDate(String endDate) {
     this.endDate = endDate;
   }
 

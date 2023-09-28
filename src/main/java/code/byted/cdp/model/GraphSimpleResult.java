@@ -42,7 +42,7 @@ import java.util.List;
  * GraphSimpleResult
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-11T11:20:29.425+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-28T16:25:17.153+08:00[Asia/Shanghai]")
 public class GraphSimpleResult {
   @SerializedName("graphName")
   private String graphName = null;
@@ -52,6 +52,7 @@ public class GraphSimpleResult {
    */
   @JsonAdapter(GraphTypeEnum.Adapter.class)
   public enum GraphTypeEnum {
+    UNKNOWN("Unknown"),
     CUSTOMANALYSIS("CustomAnalysis"),
     CROSSANALYSIS("CrossAnalysis"),
     PUBLICCUSTOMANALYSIS("PublicCustomAnalysis");
@@ -75,7 +76,7 @@ public class GraphSimpleResult {
           return b;
         }
       }
-      return null;
+      return UNKNOWN;
     }
     public static class Adapter extends TypeAdapter<GraphTypeEnum> {
       @Override
