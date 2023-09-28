@@ -41,7 +41,7 @@ import java.io.IOException;
  * DataAssetConf
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-28T16:52:49.276+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-08T11:48:39.432+08:00[Asia/Shanghai]")
 public class DataAssetConf {
   @SerializedName("dataAssetType")
   private DataAssetType dataAssetType = null;
