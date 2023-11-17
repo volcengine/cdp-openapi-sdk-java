@@ -47,7 +47,7 @@ import java.util.List;
  * SegmentationResp
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-11T11:20:29.425+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-11-17T15:32:30.245+08:00[Asia/Shanghai]")
 public class SegmentationResp {
   @SerializedName("allowDownload")
   private Boolean allowDownload = null;
@@ -57,6 +57,7 @@ public class SegmentationResp {
    */
   @JsonAdapter(CantPublicTypeEnum.Adapter.class)
   public enum CantPublicTypeEnum {
+    UNKNOWN("Unknown"),
     IDTYPENOTSATISFIED("IdTypeNotSatisfied"),
     COUNTNOTSATISFIED("CountNotSatisfied"),
     AUTHNOTSATISFIED("AuthNotSatisfied"),
@@ -81,7 +82,7 @@ public class SegmentationResp {
           return b;
         }
       }
-      return null;
+      return UNKNOWN;
     }
     public static class Adapter extends TypeAdapter<CantPublicTypeEnum> {
       @Override
@@ -124,6 +125,7 @@ public class SegmentationResp {
    */
   @JsonAdapter(HashMethodEnum.Adapter.class)
   public enum HashMethodEnum {
+    UNKNOWN("Unknown"),
     MD5("MD5"),
     SHA256("SHA256"),
     AES256("AES256");
@@ -147,7 +149,7 @@ public class SegmentationResp {
           return b;
         }
       }
-      return null;
+      return UNKNOWN;
     }
     public static class Adapter extends TypeAdapter<HashMethodEnum> {
       @Override
@@ -211,6 +213,7 @@ public class SegmentationResp {
    */
   @JsonAdapter(SegStatusEnum.Adapter.class)
   public enum SegStatusEnum {
+    UNKNOWN("Unknown"),
     EXPORTING("Exporting"),
     INVALID("Invalid"),
     NORMAL("Normal"),
@@ -237,7 +240,7 @@ public class SegmentationResp {
           return b;
         }
       }
-      return null;
+      return UNKNOWN;
     }
     public static class Adapter extends TypeAdapter<SegStatusEnum> {
       @Override
@@ -262,6 +265,7 @@ public class SegmentationResp {
    */
   @JsonAdapter(SegTypeEnum.Adapter.class)
   public enum SegTypeEnum {
+    UNKNOWN("Unknown"),
     UPLOADED("Uploaded"),
     CONDITIONAL("Conditional"),
     SEGBASED("SegBased"),
@@ -296,7 +300,7 @@ public class SegmentationResp {
           return b;
         }
       }
-      return null;
+      return UNKNOWN;
     }
     public static class Adapter extends TypeAdapter<SegTypeEnum> {
       @Override
@@ -327,6 +331,7 @@ public class SegmentationResp {
    */
   @JsonAdapter(UploadTypeEnum.Adapter.class)
   public enum UploadTypeEnum {
+    UNKNOWN("Unknown"),
     NORMAL("normal"),
     FILE("file"),
     HDFS("hdfs"),
@@ -357,7 +362,7 @@ public class SegmentationResp {
           return b;
         }
       }
-      return null;
+      return UNKNOWN;
     }
     public static class Adapter extends TypeAdapter<UploadTypeEnum> {
       @Override

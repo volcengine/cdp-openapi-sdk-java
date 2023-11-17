@@ -37,11 +37,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.threeten.bp.OffsetDateTime;
 /**
  * LabelMetaInfo
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-10-30T13:21:25.122+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-11-17T15:32:30.245+08:00[Asia/Shanghai]")
 public class LabelMetaInfo {
   @SerializedName("id")
   private Integer id = null;
@@ -116,13 +117,13 @@ public class LabelMetaInfo {
   private String owner = null;
 
   @SerializedName("createTime")
-  private String createTime = null;
+  private OffsetDateTime createTime = null;
 
   @SerializedName("updater")
   private String updater = null;
 
   @SerializedName("updateTime")
-  private String updateTime = null;
+  private OffsetDateTime updateTime = null;
 
   @SerializedName("abiDimMetId")
   private Integer abiDimMetId = null;
@@ -131,7 +132,7 @@ public class LabelMetaInfo {
   private Integer lastSuccessTaskInstanceId = null;
 
   @SerializedName("latestRunDate")
-  private String latestRunDate = null;
+  private OffsetDateTime latestRunDate = null;
 
   @SerializedName("userNum")
   private Integer userNum = null;
@@ -571,7 +572,7 @@ public class LabelMetaInfo {
     this.owner = owner;
   }
 
-  public LabelMetaInfo createTime(String createTime) {
+  public LabelMetaInfo createTime(OffsetDateTime createTime) {
     this.createTime = createTime;
     return this;
   }
@@ -581,11 +582,11 @@ public class LabelMetaInfo {
    * @return createTime
   **/
   @Schema(description = "")
-  public String getCreateTime() {
+  public OffsetDateTime getCreateTime() {
     return createTime;
   }
 
-  public void setCreateTime(String createTime) {
+  public void setCreateTime(OffsetDateTime createTime) {
     this.createTime = createTime;
   }
 
@@ -607,7 +608,7 @@ public class LabelMetaInfo {
     this.updater = updater;
   }
 
-  public LabelMetaInfo updateTime(String updateTime) {
+  public LabelMetaInfo updateTime(OffsetDateTime updateTime) {
     this.updateTime = updateTime;
     return this;
   }
@@ -617,11 +618,11 @@ public class LabelMetaInfo {
    * @return updateTime
   **/
   @Schema(description = "")
-  public String getUpdateTime() {
+  public OffsetDateTime getUpdateTime() {
     return updateTime;
   }
 
-  public void setUpdateTime(String updateTime) {
+  public void setUpdateTime(OffsetDateTime updateTime) {
     this.updateTime = updateTime;
   }
 
@@ -661,7 +662,7 @@ public class LabelMetaInfo {
     this.lastSuccessTaskInstanceId = lastSuccessTaskInstanceId;
   }
 
-  public LabelMetaInfo latestRunDate(String latestRunDate) {
+  public LabelMetaInfo latestRunDate(OffsetDateTime latestRunDate) {
     this.latestRunDate = latestRunDate;
     return this;
   }
@@ -671,11 +672,11 @@ public class LabelMetaInfo {
    * @return latestRunDate
   **/
   @Schema(description = "")
-  public String getLatestRunDate() {
+  public OffsetDateTime getLatestRunDate() {
     return latestRunDate;
   }
 
-  public void setLatestRunDate(String latestRunDate) {
+  public void setLatestRunDate(OffsetDateTime latestRunDate) {
     this.latestRunDate = latestRunDate;
   }
 
