@@ -39,7 +39,7 @@ import java.io.IOException;
  * PrivateSegInfo
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-11T11:20:29.425+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-11-17T15:23:34.702+08:00[Asia/Shanghai]")
 public class PrivateSegInfo {
   @SerializedName("isSplitSeg")
   private Boolean isSplitSeg = null;
@@ -61,6 +61,7 @@ public class PrivateSegInfo {
    */
   @JsonAdapter(SegTypeEnum.Adapter.class)
   public enum SegTypeEnum {
+    UNKNOWN("Unknown"),
     UPLOADED("Uploaded"),
     CONDITIONAL("Conditional"),
     SEGBASED("SegBased"),
@@ -95,7 +96,7 @@ public class PrivateSegInfo {
           return b;
         }
       }
-      return null;
+      return UNKNOWN;
     }
     public static class Adapter extends TypeAdapter<SegTypeEnum> {
       @Override

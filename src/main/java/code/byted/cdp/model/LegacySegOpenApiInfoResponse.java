@@ -41,7 +41,7 @@ import java.io.IOException;
  * LegacySegOpenApiInfoResponse
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-11T11:20:29.425+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-11-17T15:23:34.702+08:00[Asia/Shanghai]")
 public class LegacySegOpenApiInfoResponse {
   @SerializedName("id")
   private Integer id = null;
@@ -66,6 +66,7 @@ public class LegacySegOpenApiInfoResponse {
    */
   @JsonAdapter(SegTypeEnum.Adapter.class)
   public enum SegTypeEnum {
+    UNKNOWN("Unknown"),
     CONDITIONAL("Conditional"),
     UPLOADED("Uploaded"),
     ABI("ABI"),
@@ -109,7 +110,7 @@ public class LegacySegOpenApiInfoResponse {
           return b;
         }
       }
-      return null;
+      return UNKNOWN;
     }
     public static class Adapter extends TypeAdapter<SegTypeEnum> {
       @Override
