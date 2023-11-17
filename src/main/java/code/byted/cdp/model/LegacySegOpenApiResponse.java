@@ -28,6 +28,7 @@ package code.byted.cdp.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import code.byted.cdp.model.LegacySegOpenApiResponse;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -35,12 +36,14 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import org.threeten.bp.LocalDate;
 /**
  * LegacySegOpenApiResponse
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-09-28T16:25:17.153+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-11-17T14:46:22.594+08:00[Asia/Shanghai]")
 public class LegacySegOpenApiResponse {
   @SerializedName("id")
   private Integer id = null;
@@ -173,6 +176,9 @@ public class LegacySegOpenApiResponse {
 
   @SerializedName("createdAt")
   private String createdAt = null;
+
+  @SerializedName("childSegments")
+  private List<LegacySegOpenApiResponse> childSegments = null;
 
   @SerializedName("version")
   private Integer version = null;
@@ -453,6 +459,32 @@ public class LegacySegOpenApiResponse {
     this.createdAt = createdAt;
   }
 
+  public LegacySegOpenApiResponse childSegments(List<LegacySegOpenApiResponse> childSegments) {
+    this.childSegments = childSegments;
+    return this;
+  }
+
+  public LegacySegOpenApiResponse addChildSegmentsItem(LegacySegOpenApiResponse childSegmentsItem) {
+    if (this.childSegments == null) {
+      this.childSegments = new ArrayList<LegacySegOpenApiResponse>();
+    }
+    this.childSegments.add(childSegmentsItem);
+    return this;
+  }
+
+   /**
+   * 子包列表
+   * @return childSegments
+  **/
+  @Schema(description = "子包列表")
+  public List<LegacySegOpenApiResponse> getChildSegments() {
+    return childSegments;
+  }
+
+  public void setChildSegments(List<LegacySegOpenApiResponse> childSegments) {
+    this.childSegments = childSegments;
+  }
+
   public LegacySegOpenApiResponse version(Integer version) {
     this.version = version;
     return this;
@@ -532,6 +564,7 @@ public class LegacySegOpenApiResponse {
         Objects.equals(this.cantPublicType, legacySegOpenApiResponse.cantPublicType) &&
         Objects.equals(this.hasPublicBefore, legacySegOpenApiResponse.hasPublicBefore) &&
         Objects.equals(this.createdAt, legacySegOpenApiResponse.createdAt) &&
+        Objects.equals(this.childSegments, legacySegOpenApiResponse.childSegments) &&
         Objects.equals(this.version, legacySegOpenApiResponse.version) &&
         Objects.equals(this.onlineSegStatus, legacySegOpenApiResponse.onlineSegStatus) &&
         Objects.equals(this.pdate, legacySegOpenApiResponse.pdate);
@@ -539,7 +572,7 @@ public class LegacySegOpenApiResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, idType, idTypeName, subjectId, count, createdBy, path, exportAt, exportStrategy, segStatus, sourceResultReady, cantPublicType, hasPublicBefore, createdAt, version, onlineSegStatus, pdate);
+    return Objects.hash(id, name, idType, idTypeName, subjectId, count, createdBy, path, exportAt, exportStrategy, segStatus, sourceResultReady, cantPublicType, hasPublicBefore, createdAt, childSegments, version, onlineSegStatus, pdate);
   }
 
 
@@ -563,6 +596,7 @@ public class LegacySegOpenApiResponse {
     sb.append("    cantPublicType: ").append(toIndentedString(cantPublicType)).append("\n");
     sb.append("    hasPublicBefore: ").append(toIndentedString(hasPublicBefore)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    childSegments: ").append(toIndentedString(childSegments)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    onlineSegStatus: ").append(toIndentedString(onlineSegStatus)).append("\n");
     sb.append("    pdate: ").append(toIndentedString(pdate)).append("\n");

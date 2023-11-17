@@ -40,6 +40,7 @@ import com.google.gson.stream.JsonWriter;
  */
 @JsonAdapter(OutputType.Adapter.class)
 public enum OutputType {
+  UNKNOWN("Unknown"),
   THIRDCHANNEL("ThirdChannel");
 
   private String value;
@@ -63,7 +64,7 @@ public enum OutputType {
         return b;
       }
     }
-    return null;
+    return UNKNOWN;
   }
 
   public static class Adapter extends TypeAdapter<OutputType> {

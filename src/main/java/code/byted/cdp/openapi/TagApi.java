@@ -71,6 +71,10 @@ public class TagApi {
         this.apiClient = apiClient;
     }
 
+    public TagApi(String accessKeyID, String secretAccessKey, String sessionToken, String basePath) {
+        this.apiClient = new ApiClient(accessKeyID, secretAccessKey, sessionToken, basePath);
+    }
+
     /**
      * Build call for addOrModifyManualTags
      * @param body  (required)
@@ -160,6 +164,7 @@ public class TagApi {
         ApiResponse<ByteDanceNormalResponseString> resp = addOrModifyManualTagsWithHttpInfo(body, tenantCode);
         return resp.getData();
     }
+
 
     /**
      * 添加或者修改某个用户身上的人工标签
@@ -318,6 +323,7 @@ public class TagApi {
         return resp.getData();
     }
 
+
     /**
      * 删除某个用户身上的人工标签
      * 
@@ -461,6 +467,7 @@ public class TagApi {
         ApiResponse<ByteDanceSeqResponseOpenApiManualTagInfo> resp = getManualTagsListWithHttpInfo(tenantCode);
         return resp.getData();
     }
+
 
     /**
      * 查询某个用户身上的人工标签列表
@@ -608,6 +615,7 @@ public class TagApi {
         ApiResponse<ByteDanceSeqResponseTagValueResp> resp = getTagValuesWithHttpInfo(tenantCode, tagId);
         return resp.getData();
     }
+
 
     /**
      * 获取某个标签的取值
@@ -758,6 +766,7 @@ public class TagApi {
         ApiResponse<ByteDanceSeqResponseSeqDomainGroupedTags> resp = getTagsListWithHttpInfo(tenantCode, idType, discardValue);
         return resp.getData();
     }
+
 
     /**
      * 获取所有标签列表，包含各个标签的取值

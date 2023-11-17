@@ -78,6 +78,10 @@ public class LabelApi {
         this.apiClient = apiClient;
     }
 
+    public LabelApi(String accessKeyID, String secretAccessKey, String sessionToken, String basePath) {
+        this.apiClient = new ApiClient(accessKeyID, secretAccessKey, sessionToken, basePath);
+    }
+
     /**
      * Build call for createManualLabel
      * @param body  (required)
@@ -160,6 +164,7 @@ public class LabelApi {
         ApiResponse<CommonLabelId> resp = createManualLabelWithHttpInfo(body);
         return resp.getData();
     }
+
 
     /**
      * 创建人工标签
@@ -338,6 +343,7 @@ public class LabelApi {
         return resp.getData();
     }
 
+
     /**
      * 标签运行结果历史数据
      * 
@@ -496,6 +502,7 @@ public class LabelApi {
         return resp.getData();
     }
 
+
     /**
      * 获取标签精简信息
      * 
@@ -642,6 +649,7 @@ public class LabelApi {
         ApiResponse<CommonResponseListLabelTreeNode> resp = getLabelTreeWithHttpInfo(xTenant, subjectId);
         return resp.getData();
     }
+
 
     /**
      * 获取标签树信息
@@ -793,6 +801,7 @@ public class LabelApi {
         ApiResponse<CommonListLabelMetaInfo> resp = getLabelsWithHttpInfo(xTenant, subjectId, type);
         return resp.getData();
     }
+
 
     /**
      * 获取项目下标签列表
@@ -954,6 +963,7 @@ public class LabelApi {
         ApiResponse<CommonLabelResultData> resp = getLatestHistoryDataWithHttpInfo(id, showNum, xTenant);
         return resp.getData();
     }
+
 
     /**
      * 标签上一次运行结果数据
@@ -1118,6 +1128,7 @@ public class LabelApi {
         return resp.getData();
     }
 
+
     /**
      * 获取在线可用标签/属性/明细/行为事件列表
      * 
@@ -1273,6 +1284,7 @@ public class LabelApi {
         return resp.getData();
     }
 
+
     /**
      * 标签重跑
      * 
@@ -1423,6 +1435,7 @@ public class LabelApi {
         ApiResponse<CommonDataModelId> resp = uploadLabelDataWithHttpInfo(file, xTenant);
         return resp.getData();
     }
+
 
     /**
      * 上传标签文件

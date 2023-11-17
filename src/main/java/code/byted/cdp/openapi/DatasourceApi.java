@@ -71,6 +71,10 @@ public class DatasourceApi {
         this.apiClient = apiClient;
     }
 
+    public DatasourceApi(String accessKeyID, String secretAccessKey, String sessionToken, String basePath) {
+        this.apiClient = new ApiClient(accessKeyID, secretAccessKey, sessionToken, basePath);
+    }
+
     /**
      * Build call for queryDataSourceList
      * @param xTenant  (required)
@@ -159,6 +163,7 @@ public class DatasourceApi {
         ApiResponse<ListDataSourceListItemVo> resp = queryDataSourceListWithHttpInfo(xTenant, sourceName);
         return resp.getData();
     }
+
 
     /**
      * 查询数据源列表openapi
@@ -302,6 +307,7 @@ public class DatasourceApi {
         ApiResponse<ListCdpEventVo> resp = queryeventListWithHttpInfo(dataSourceId);
         return resp.getData();
     }
+
 
     /**
      * 查询事件列表
@@ -452,6 +458,7 @@ public class DatasourceApi {
         return resp.getData();
     }
 
+
     /**
      * 查询事件属性列表
      * 
@@ -594,6 +601,7 @@ public class DatasourceApi {
         ApiResponse<ListCdpPropertyVo> resp = querypropertyListWithHttpInfo(dataSourceId);
         return resp.getData();
     }
+
 
     /**
      * 查询单个数据源的表属性字段列表openapi
@@ -755,6 +763,7 @@ public class DatasourceApi {
         ApiResponse<ListString> resp = querypropertyValuesWithHttpInfo(id, dataSourceId, page, pageSize, keyword);
         return resp.getData();
     }
+
 
     /**
      * 查询属性枚举值

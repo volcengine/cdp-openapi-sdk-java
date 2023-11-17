@@ -68,6 +68,10 @@ public class SubjectApi {
         this.apiClient = apiClient;
     }
 
+    public SubjectApi(String accessKeyID, String secretAccessKey, String sessionToken, String basePath) {
+        this.apiClient = new ApiClient(accessKeyID, secretAccessKey, sessionToken, basePath);
+    }
+
     /**
      * Build call for getSubjectIdTypes
      * @param subjectId  (required)
@@ -152,6 +156,7 @@ public class SubjectApi {
         ApiResponse<ListIdType> resp = getSubjectIdTypesWithHttpInfo(subjectId);
         return resp.getData();
     }
+
 
     /**
      * 查询实体列表
@@ -297,6 +302,7 @@ public class SubjectApi {
         ApiResponse<ListSubjectMeta> resp = getSubjectsWithHttpInfo(xTenant, orgId);
         return resp.getData();
     }
+
 
     /**
      * 查询主体列表

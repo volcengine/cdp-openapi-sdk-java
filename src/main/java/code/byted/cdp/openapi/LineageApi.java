@@ -67,6 +67,10 @@ public class LineageApi {
         this.apiClient = apiClient;
     }
 
+    public LineageApi(String accessKeyID, String secretAccessKey, String sessionToken, String basePath) {
+        this.apiClient = new ApiClient(accessKeyID, secretAccessKey, sessionToken, basePath);
+    }
+
     /**
      * Build call for queryLineageByNid
      * @param bizType 业务类型枚举Key (required)
@@ -159,6 +163,7 @@ public class LineageApi {
         ApiResponse<ResNodeLineage> resp = queryLineageByNidWithHttpInfo(bizType, nativeId);
         return resp.getData();
     }
+
 
     /**
      * 根据业务类型&amp;原生ID查询出入度数据血缘

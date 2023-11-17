@@ -68,6 +68,10 @@ public class DetailDatasourceApi {
         this.apiClient = apiClient;
     }
 
+    public DetailDatasourceApi(String accessKeyID, String secretAccessKey, String sessionToken, String basePath) {
+        this.apiClient = new ApiClient(accessKeyID, secretAccessKey, sessionToken, basePath);
+    }
+
     /**
      * Build call for getDetailAttributes
      * @param body  (required)
@@ -176,6 +180,7 @@ public class DetailDatasourceApi {
         ApiResponse<DetailAttributesResp> resp = getDetailAttributesWithHttpInfo(body, tenantCode, attributeId, keyword, current, pageSize);
         return resp.getData();
     }
+
 
     /**
      * 获取明细数据源的枚举值

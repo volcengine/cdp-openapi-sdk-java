@@ -68,6 +68,10 @@ public class FileDateAssetApi {
         this.apiClient = apiClient;
     }
 
+    public FileDateAssetApi(String accessKeyID, String secretAccessKey, String sessionToken, String basePath) {
+        this.apiClient = new ApiClient(accessKeyID, secretAccessKey, sessionToken, basePath);
+    }
+
     /**
      * Build call for downloadFileDateAsset
      * @param xTenant  (required)
@@ -167,6 +171,7 @@ public class FileDateAssetApi {
         ApiResponse<File> resp = downloadFileDateAssetWithHttpInfo(xTenant, taskId, filePath);
         return resp.getData();
     }
+
 
     /**
      * 下载分群明细
@@ -312,6 +317,7 @@ public class FileDateAssetApi {
         ApiResponse<SeqFileDataTaskSimpleResult> resp = getFileDateAssetTaskListWithHttpInfo(xTenant);
         return resp.getData();
     }
+
 
     /**
      * 获取分群明细任务列表

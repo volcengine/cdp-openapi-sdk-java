@@ -72,6 +72,10 @@ public class AssetApi {
         this.apiClient = apiClient;
     }
 
+    public AssetApi(String accessKeyID, String secretAccessKey, String sessionToken, String basePath) {
+        this.apiClient = new ApiClient(accessKeyID, secretAccessKey, sessionToken, basePath);
+    }
+
     /**
      * Build call for getAccessCoreStatistics
      * @param body  (optional)
@@ -150,6 +154,7 @@ public class AssetApi {
         ApiResponse<CommonResponseListAccessCoreStatisticsResp> resp = getAccessCoreStatisticsWithHttpInfo(body);
         return resp.getData();
     }
+
 
     /**
      * 获取访问统计-核心指标
@@ -286,6 +291,7 @@ public class AssetApi {
         return resp.getData();
     }
 
+
     /**
      * 获取资产报表
      * 
@@ -420,6 +426,7 @@ public class AssetApi {
         ApiResponse<CommonResponseListTendencyStatisticsResp> resp = getTendencyStatisticsWithHttpInfo(body);
         return resp.getData();
     }
+
 
     /**
      * 获取访问统计-核心指标趋势图
