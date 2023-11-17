@@ -39,7 +39,7 @@ import java.io.IOException;
  * LegacySegResult
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-11T11:20:29.425+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-11-17T15:23:34.702+08:00[Asia/Shanghai]")
 public class LegacySegResult {
   @SerializedName("count")
   private Long count = null;
@@ -58,6 +58,7 @@ public class LegacySegResult {
    */
   @JsonAdapter(SegStatusEnum.Adapter.class)
   public enum SegStatusEnum {
+    UNKNOWN("Unknown"),
     EXPORTING("Exporting"),
     INVALID("Invalid"),
     NORMAL("Normal");
@@ -81,7 +82,7 @@ public class LegacySegResult {
           return b;
         }
       }
-      return null;
+      return UNKNOWN;
     }
     public static class Adapter extends TypeAdapter<SegStatusEnum> {
       @Override

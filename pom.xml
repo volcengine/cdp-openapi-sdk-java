@@ -6,7 +6,7 @@
     <artifactId>cdp-openapisdk-java</artifactId>
     <packaging>jar</packaging>
     <name>openapi-client</name>
-    <version>1.19.5</version>
+    <version>1.19.6</version>
     <url>https://github.com/swagger-api/swagger-codegen</url>
     <description>Swagger Java</description>
     <scm>
