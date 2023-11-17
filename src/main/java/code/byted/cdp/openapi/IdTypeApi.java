@@ -67,10 +67,6 @@ public class IdTypeApi {
         this.apiClient = apiClient;
     }
 
-    public IdTypeApi(String accessKeyID, String secretAccessKey, String sessionToken, String basePath) {
-        this.apiClient = new ApiClient(accessKeyID, secretAccessKey, sessionToken, basePath);
-    }
-
     /**
      * Build call for listIdTypeMetaByTenant
      * @param xTenant tenantCode (required)
@@ -155,7 +151,6 @@ public class IdTypeApi {
         ApiResponse<ByteDanceNormalResponseIdTypeResp> resp = listIdTypeMetaByTenantWithHttpInfo(xTenant);
         return resp.getData();
     }
-
 
     /**
      * 获取idType元信息

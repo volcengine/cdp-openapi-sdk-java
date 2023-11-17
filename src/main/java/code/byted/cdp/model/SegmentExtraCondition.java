@@ -41,7 +41,6 @@ import com.google.gson.stream.JsonWriter;
  */
 @JsonAdapter(SegmentExtraCondition.Adapter.class)
 public enum SegmentExtraCondition {
-  UNKNOWN("Unknown"),
   CONDITIONAL("Conditional"),
   UPLOADED("Uploaded"),
   ABI("ABI"),
@@ -88,7 +87,7 @@ public enum SegmentExtraCondition {
         return b;
       }
     }
-    return UNKNOWN;
+    return null;
   }
 
   public static class Adapter extends TypeAdapter<SegmentExtraCondition> {

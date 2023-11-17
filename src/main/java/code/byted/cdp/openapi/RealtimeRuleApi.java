@@ -67,10 +67,6 @@ public class RealtimeRuleApi {
         this.apiClient = apiClient;
     }
 
-    public RealtimeRuleApi(String accessKeyID, String secretAccessKey, String sessionToken, String basePath) {
-        this.apiClient = new ApiClient(accessKeyID, secretAccessKey, sessionToken, basePath);
-    }
-
     /**
      * Build call for getRealtimeRuleList
      * @param tenantsCode 租户ID (required)
@@ -170,7 +166,6 @@ public class RealtimeRuleApi {
         ApiResponse<RealtimeRuleListResp> resp = getRealtimeRuleListWithHttpInfo(tenantsCode, page, pageSize);
         return resp.getData();
     }
-
 
     /**
      * 获取实时规则列表

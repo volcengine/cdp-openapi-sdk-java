@@ -77,10 +77,6 @@ public class OnlineApi {
         this.apiClient = apiClient;
     }
 
-    public OnlineApi(String accessKeyID, String secretAccessKey, String sessionToken, String basePath) {
-        this.apiClient = new ApiClient(accessKeyID, secretAccessKey, sessionToken, basePath);
-    }
-
     /**
      * Build call for checkHitRealtimeRule
      * @param body  (required)
@@ -171,7 +167,6 @@ public class OnlineApi {
         return resp.getData();
     }
 
-
     /**
      * 判断是否命中实时规则,高速接口
      * 
@@ -251,7 +246,7 @@ public class OnlineApi {
         localVarQueryParams.add(new Pair("Action","QueryOpenPlatformOpenApi"));
         localVarQueryParams.add(new Pair("Version","2021-12-16"));
         localVarQueryParams.add(new Pair("ApiAction","getIdMapping"));
-        localVarQueryParams.add(new Pair("ApiVersion","2023-08-08"));
+        localVarQueryParams.add(new Pair("ApiVersion","2023-02-10"));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -312,7 +307,6 @@ public class OnlineApi {
         ApiResponse<IDMResp> resp = getIdMappingWithHttpInfo(body);
         return resp.getData();
     }
-
 
     /**
      * idmapping映射,高速接口
@@ -453,7 +447,6 @@ public class OnlineApi {
         return resp.getData();
     }
 
-
     /**
      * 查询用户的行为和明细
      * 
@@ -593,7 +586,6 @@ public class OnlineApi {
         return resp.getData();
     }
 
-
     /**
      * 查询标签和属性
      * 
@@ -732,7 +724,6 @@ public class OnlineApi {
         ApiResponse<OnlineGetUserSegmentResp> resp = getUserSegmentV2WithHttpInfo(body);
         return resp.getData();
     }
-
 
     /**
      * 查询用户是否命中分群v2
@@ -889,7 +880,6 @@ public class OnlineApi {
         ApiResponse<ByteDanceSeqResponseString> resp = queryUserSegWithHttpInfo(id, segIds, xTenant);
         return resp.getData();
     }
-
 
     /**
      * 查询用户是否命中人群,高速接口

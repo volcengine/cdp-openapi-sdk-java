@@ -39,7 +39,7 @@ import java.io.IOException;
  * ProfileTag
  */
 
-@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-11-17T14:46:22.594+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "code.byted.cdp.client.JavaClientCodegen", date = "2023-08-11T11:20:29.425+08:00[Asia/Shanghai]")
 public class ProfileTag {
   @SerializedName("code")
   private String code = null;
@@ -49,7 +49,6 @@ public class ProfileTag {
    */
   @JsonAdapter(CreateWayEnum.Adapter.class)
   public enum CreateWayEnum {
-    UNKNOWN("Unknown"),
     ALL("all"),
     CALCU("calcu"),
     RULE("rule"),
@@ -88,7 +87,7 @@ public class ProfileTag {
           return b;
         }
       }
-      return UNKNOWN;
+      return null;
     }
     public static class Adapter extends TypeAdapter<CreateWayEnum> {
       @Override
@@ -113,7 +112,6 @@ public class ProfileTag {
    */
   @JsonAdapter(DataTypeEnum.Adapter.class)
   public enum DataTypeEnum {
-    UNKNOWN("Unknown"),
     STRING("String"),
     STRINGENUM("StringEnum"),
     DECIMAL("Decimal"),
@@ -148,7 +146,7 @@ public class ProfileTag {
           return b;
         }
       }
-      return UNKNOWN;
+      return null;
     }
     public static class Adapter extends TypeAdapter<DataTypeEnum> {
       @Override
@@ -170,7 +168,6 @@ public class ProfileTag {
    */
   @JsonAdapter(FeatureDataTypeEnum.Adapter.class)
   public enum FeatureDataTypeEnum {
-    UNKNOWN("Unknown"),
     STRING("string"),
     INT("int"),
     BIGINT("bigint"),
@@ -202,7 +199,7 @@ public class ProfileTag {
           return b;
         }
       }
-      return UNKNOWN;
+      return null;
     }
     public static class Adapter extends TypeAdapter<FeatureDataTypeEnum> {
       @Override
@@ -236,7 +233,6 @@ public class ProfileTag {
    */
   @JsonAdapter(OriginDataTypeEnum.Adapter.class)
   public enum OriginDataTypeEnum {
-    UNKNOWN("Unknown"),
     STRING("string"),
     INT("int"),
     BIGINT("bigint"),
@@ -268,7 +264,7 @@ public class ProfileTag {
           return b;
         }
       }
-      return UNKNOWN;
+      return null;
     }
     public static class Adapter extends TypeAdapter<OriginDataTypeEnum> {
       @Override
@@ -290,7 +286,6 @@ public class ProfileTag {
    */
   @JsonAdapter(OriginTypeEnum.Adapter.class)
   public enum OriginTypeEnum {
-    UNKNOWN("Unknown"),
     STRING("String"),
     STRINGENUM("StringEnum"),
     DECIMAL("Decimal"),
@@ -325,7 +320,7 @@ public class ProfileTag {
           return b;
         }
       }
-      return UNKNOWN;
+      return null;
     }
     public static class Adapter extends TypeAdapter<OriginTypeEnum> {
       @Override

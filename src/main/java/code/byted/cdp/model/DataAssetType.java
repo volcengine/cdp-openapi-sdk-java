@@ -40,7 +40,6 @@ import com.google.gson.stream.JsonWriter;
  */
 @JsonAdapter(DataAssetType.Adapter.class)
 public enum DataAssetType {
-  UNKNOWN("Unknown"),
   SEGDETAIL("SegDetail");
 
   private String value;
@@ -64,7 +63,7 @@ public enum DataAssetType {
         return b;
       }
     }
-    return UNKNOWN;
+    return null;
   }
 
   public static class Adapter extends TypeAdapter<DataAssetType> {

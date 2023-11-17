@@ -69,10 +69,6 @@ public class SelectionComponentApi {
         this.apiClient = apiClient;
     }
 
-    public SelectionComponentApi(String accessKeyID, String secretAccessKey, String sessionToken, String basePath) {
-        this.apiClient = new ApiClient(accessKeyID, secretAccessKey, sessionToken, basePath);
-    }
-
     /**
      * Build call for dslCheck
      * @param body  (required)
@@ -162,7 +158,6 @@ public class SelectionComponentApi {
         ApiResponse<DslCheckResp> resp = dslCheckWithHttpInfo(body, tenantCode);
         return resp.getData();
     }
-
 
     /**
      * 校验dsl是否合法
@@ -311,7 +306,6 @@ public class SelectionComponentApi {
         ApiResponse<PreviewResp> resp = previewDSLWithHttpInfo(body, tenantCode);
         return resp.getData();
     }
-
 
     /**
      * 预估圈人数量

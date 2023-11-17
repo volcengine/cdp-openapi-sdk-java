@@ -71,10 +71,6 @@ public class LabelOpenApiApi {
         this.apiClient = apiClient;
     }
 
-    public LabelOpenApiApi(String accessKeyID, String secretAccessKey, String sessionToken, String basePath) {
-        this.apiClient = new ApiClient(accessKeyID, secretAccessKey, sessionToken, basePath);
-    }
-
     /**
      * Build call for deleteRealtimeTagData
      * @param baseId  (required)
@@ -166,7 +162,6 @@ public class LabelOpenApiApi {
         ApiResponse<CommonString> resp = deleteRealtimeTagDataWithHttpInfo(baseId, tagId);
         return resp.getData();
     }
-
 
     /**
      * 删除人工标签
@@ -310,7 +305,6 @@ public class LabelOpenApiApi {
         ApiResponse<CommonListObject> resp = getLabelValuesWithHttpInfo(labelId);
         return resp.getData();
     }
-
 
     /**
      * 获取标签枚举值老接口
@@ -463,7 +457,6 @@ public class LabelOpenApiApi {
         return resp.getData();
     }
 
-
     /**
      * 获取项目下标签列表
      * 
@@ -604,7 +597,6 @@ public class LabelOpenApiApi {
         ApiResponse<CommonString> resp = updateRealtimeTagDataWithHttpInfo(body);
         return resp.getData();
     }
-
 
     /**
      * 更新人工标签

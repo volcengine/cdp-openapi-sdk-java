@@ -125,22 +125,13 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("Swagger-Codegen/1.20.2-SNAPSHOT/java");
+        setUserAgent("Swagger-Codegen/1.20.0-SNAPSHOT/java");
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications = new HashMap<String, Authentication>();
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
     }
-
-    /*
-    * Constructor for ApiClient with session token
-    */
-    public ApiClient(String accessKeyID, String secretAccessKey, String sessionToken, String basePath) {
-        this(accessKeyID, secretAccessKey, basePath);
-        this.credentials.setSessionToken(sessionToken);
-    }
-
 
     /**
      * Get base path
@@ -1319,7 +1310,7 @@ class SignerV4Impl {
         public static final String ContentTypeValue = "application/x-www-form-urlencoded; charset=utf-8";
         public static final String XContentSha256 = "X-Content-Sha256";
         public static final String Authorization = "Authorization";
-        public static final String XSecurityToken = "X-Cdp-Security-Token";
+        public static final String XSecurityToken = "X-Security-Token";
 
         public static final String ContentMd5 = "Content-Md5";
 

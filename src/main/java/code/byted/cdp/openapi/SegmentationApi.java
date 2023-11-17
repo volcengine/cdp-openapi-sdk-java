@@ -78,10 +78,6 @@ public class SegmentationApi {
         this.apiClient = apiClient;
     }
 
-    public SegmentationApi(String accessKeyID, String secretAccessKey, String sessionToken, String basePath) {
-        this.apiClient = new ApiClient(accessKeyID, secretAccessKey, sessionToken, basePath);
-    }
-
     /**
      * Build call for createConditionalSegment
      * @param tenantId  (required)
@@ -167,7 +163,6 @@ public class SegmentationApi {
         ApiResponse<LegacySegOpenApiInfoResponse> resp = createConditionalSegmentWithHttpInfo(tenantId, body);
         return resp.getData();
     }
-
 
     /**
      * 创建离线规则-简化
@@ -330,7 +325,6 @@ public class SegmentationApi {
         return resp.getData();
     }
 
-
     /**
      * 分群ID文件下载
      * 
@@ -478,7 +472,6 @@ public class SegmentationApi {
         ApiResponse<LegacySegOpenApiInfoResponse> resp = legacyCreateManualSegmentWithHttpInfo(tenantId, body);
         return resp.getData();
     }
-
 
     /**
      * 创建人工分群
@@ -628,7 +621,6 @@ public class SegmentationApi {
         return resp.getData();
     }
 
-
     /**
      * 创建上传分群
      * 
@@ -776,7 +768,6 @@ public class SegmentationApi {
         legacyDeleteSegmentWithHttpInfo(tenantId, segId);
     }
 
-
     /**
      * 删除分群
      * 
@@ -918,7 +909,6 @@ public class SegmentationApi {
         ApiResponse<ByteDanceResponseSegmentationResp> resp = legacyGetSegmentWithHttpInfo(tenantId, segId);
         return resp.getData();
     }
-
 
     /**
      * 分群详情
@@ -1102,7 +1092,6 @@ public class SegmentationApi {
         return resp.getData();
     }
 
-
     /**
      * 分群列表查看，分页
      * 
@@ -1270,7 +1259,6 @@ public class SegmentationApi {
         legacyModifyManualSegmentWithHttpInfo(tenantId, segId, body);
     }
 
-
     /**
      * 修改人工分群
      * 
@@ -1414,7 +1402,6 @@ public class SegmentationApi {
     public void modifyConditionalSegment(Integer tenantId, Integer segId, SimplifiedSegCreateOrUpdateRequest body) throws ApiException {
         modifyConditionalSegmentWithHttpInfo(tenantId, segId, body);
     }
-
 
     /**
      * 修改离线规则-简化
@@ -1565,7 +1552,6 @@ public class SegmentationApi {
         ApiResponse<ByteDanceResponseSegmentationOnlineServiceEnableResp> resp = segmentOnlineServiceEnableWithHttpInfo(body, tenantId, segId);
         return resp.getData();
     }
-
 
     /**
      * 分群在线服务开启/关闭
@@ -1719,7 +1705,6 @@ public class SegmentationApi {
         return resp.getData();
     }
 
-
     /**
      * 上传分群文件
      * 
@@ -1869,7 +1854,6 @@ public class SegmentationApi {
         ApiResponse<SegOpenApiFileUploadResponse> resp = uploadSegFileToChWithHttpInfo(file, tenantId);
         return resp.getData();
     }
-
 
     /**
      * 上传人工分群文件

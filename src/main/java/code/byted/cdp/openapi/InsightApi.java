@@ -71,10 +71,6 @@ public class InsightApi {
         this.apiClient = apiClient;
     }
 
-    public InsightApi(String accessKeyID, String secretAccessKey, String sessionToken, String basePath) {
-        this.apiClient = new ApiClient(accessKeyID, secretAccessKey, sessionToken, basePath);
-    }
-
     /**
      * Build call for getDSLInsightKey
      * @param body dsl结构 (required)
@@ -157,7 +153,6 @@ public class InsightApi {
         ApiResponse<InlineResponse200> resp = getDSLInsightKeyWithHttpInfo(body);
         return resp.getData();
     }
-
 
     /**
      * 获取洞察跳转key
@@ -327,7 +322,6 @@ public class InsightApi {
         return resp.getData();
     }
 
-
     /**
      * 洞察报告详情
      * 
@@ -485,7 +479,6 @@ public class InsightApi {
         return resp.getData();
     }
 
-
     /**
      * 洞察报告列表
      * 
@@ -636,7 +629,6 @@ public class InsightApi {
         ApiResponse<InlineResponse2003> resp = getInsightReportUsageWithHttpInfo(xTenant, xEnv, openapiOnly);
         return resp.getData();
     }
-
 
     /**
      * 统计洞察报告查看次数
